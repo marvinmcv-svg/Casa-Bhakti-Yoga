@@ -1,0 +1,93 @@
+// Casa Bhakti - Yoga & Vedanta Temple
+// Database schema for fully admin-editable bilingual site
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Editable site copy, keyed by section.field, bilingual
+model SiteContent {
+  key       String   @id // e.g. "hero.title", "about.body"
+  valueEn   String   @default("")
+  valueEs   String   @default("")
+  updatedAt DateTime @updatedAt
+}
+
+model ClassType {
+  id            String   @id @default(cuid())
+  nameEn        String
+  nameEs        String
+  descriptionEn String   @default("")
+  descriptionEs String   @default("")
+  level         String   @default("all") // beginner | intermediate | advanced | all
+  durationMin   Int      @default(90)
+  imageUrl      String   @default("")
+  order         Int      @default(0)
+  schedules     ClassSchedule[]
+}
+
+model ClassSchedule {
+  id           String   @id @default(cuid())
+  dayOfWeek    Int      // 0 = Sunday ... 6 = Saturday
+  startTime    String   // "08:15"
+  endTime      String   // "09:30"
+  classTypeId  String
+  classType    ClassType @relation(fields: [classTypeId], references: [id], onDelete: Cascade)
+  instructorEn String   @default("")
+  instructorEs String   @default("")
+  online       Boolean  @default(false)
+  order        Int      @default(0)
+}
+
+model Event {
+  id            String   @id @default(cuid())
+  titleEn       String
+  titleEs       String
+  descriptionEn String   @default("")
+  descriptionEs String   @default("")
+  date          DateTime
+  endTime       String?
+  locationEn    String   @default("")
+  locationEs    String   @default("")
+  imageUrl      String   @default("")
+  priceEn       String   @default("")
+  priceEs       String   @default("")
+  featured      Boolean  @default(false)
+  order         Int      @default(0)
+}
+
+model Teacher {
+  id             String   @id @default(cuid())
+  nameEn         String
+  nameEs         String
+  roleEn         String   @default("")
+  roleEs         String   @default("")
+  bioEn          String   @default("")
+  bioEs          String   @default("")
+  specialtiesEn  String   @default("")
+  specialtiesEs  String   @default("")
+  imageUrl       String   @default("")
+  order          Int      @default(0)
+}
+
+model GalleryItem {
+  id        String   @id @default(cuid())
+  imageUrl  String
+  captionEn String   @default("")
+  captionEs String   @default("")
+  type      String   @default("image") // image | video
+  videoUrl  String   @default("")
+  order     Int      @default(0)
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}

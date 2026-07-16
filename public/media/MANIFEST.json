@@ -1,0 +1,842 @@
+[
+  {
+    "filename": "about-bhakti.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 291.1,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "about-studio.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 275.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "about-yoga-practice.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 213.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "casabhakti-search-01.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 115.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "casabhakti-search-02.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 208.1,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "casabhakti-search-03.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 233.8,
+    "orientation": "square"
+  },
+  {
+    "filename": "casabhakti-search-04.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 1306.5,
+    "orientation": "square"
+  },
+  {
+    "filename": "casabhakti-search-05.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 1304.6,
+    "orientation": "square"
+  },
+  {
+    "filename": "casabhakti-search-06.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 1322.6,
+    "orientation": "square"
+  },
+  {
+    "filename": "casabhakti-search-07.jpg",
+    "width": 1200,
+    "height": 1600,
+    "format": "JPEG",
+    "size_kb": 219.9,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "casabhakti-search-08.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 1079.3,
+    "orientation": "square"
+  },
+  {
+    "filename": "casabhakti-search-09.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 1318.6,
+    "orientation": "square"
+  },
+  {
+    "filename": "casabhakti-search-10.jpg",
+    "width": 3024,
+    "height": 4032,
+    "format": "JPEG",
+    "size_kb": 2470.0,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "event-01.jpeg",
+    "width": 640,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 126.3,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "event-02.jpeg",
+    "width": 640,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 112.2,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "gallery-01.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 350.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-02.jpg",
+    "width": 1100,
+    "height": 734,
+    "format": "JPEG",
+    "size_kb": 309.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-03.jpg",
+    "width": 1100,
+    "height": 734,
+    "format": "JPEG",
+    "size_kb": 256.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-04.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 248.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-05.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 191.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-06.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 147.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-07.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 132.6,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-08.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 132.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-09.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 78.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-10.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 236.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-11.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 157.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-12.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 206.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-13.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 162.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-14.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 206.0,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "gallery-15.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 350.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "hero-kirtan.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 175.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "hero-yoga-class.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 218.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "hero-yoga-meditation.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 122.8,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "hero-yoga-retreat.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 246.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "ig-casabhakti-profesorado-2024.jpg",
+    "width": 360,
+    "height": 640,
+    "format": "JPEG",
+    "size_kb": 26.8,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "ig-casabhakti-yoga-forma-de-ver-vida.jpg",
+    "width": 360,
+    "height": 640,
+    "format": "JPEG",
+    "size_kb": 50.6,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "ig-casabhakti-yoga-santa-cruz-2026.jpg",
+    "width": 361,
+    "height": 640,
+    "format": "JPEG",
+    "size_kb": 39.9,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "ig-kalyani-baba-ram-dass-quote.jpg",
+    "width": 360,
+    "height": 640,
+    "format": "JPEG",
+    "size_kb": 23.9,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "ig-kalyani-karadarshana-mantra.jpg",
+    "width": 360,
+    "height": 640,
+    "format": "JPEG",
+    "size_kb": 29.8,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "ig-post-C61HI8Suc71.jpg",
+    "width": 640,
+    "height": 640,
+    "format": "JPEG",
+    "size_kb": 64.7,
+    "orientation": "square"
+  },
+  {
+    "filename": "kirtan-01.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 75.8,
+    "orientation": "square"
+  },
+  {
+    "filename": "kirtan-02.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 48.6,
+    "orientation": "square"
+  },
+  {
+    "filename": "kirtan-03.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 50.3,
+    "orientation": "square"
+  },
+  {
+    "filename": "kirtan-04.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 48.2,
+    "orientation": "square"
+  },
+  {
+    "filename": "kirtan-05.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 47.1,
+    "orientation": "square"
+  },
+  {
+    "filename": "kirtan-06.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 53.8,
+    "orientation": "square"
+  },
+  {
+    "filename": "sadhana-dsc5762.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 132.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-dsc5842.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 78.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-dsc5859.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 132.6,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-dsc5865.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 236.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-mantras-01.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 75.8,
+    "orientation": "square"
+  },
+  {
+    "filename": "sadhana-mantras-02.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 48.6,
+    "orientation": "square"
+  },
+  {
+    "filename": "sadhana-mantras-03.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 50.3,
+    "orientation": "square"
+  },
+  {
+    "filename": "sadhana-mantras-04.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 48.2,
+    "orientation": "square"
+  },
+  {
+    "filename": "sadhana-mantras-05.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 47.1,
+    "orientation": "square"
+  },
+  {
+    "filename": "sadhana-mantras-06.png",
+    "width": 1080,
+    "height": 1080,
+    "format": "PNG",
+    "size_kb": 53.8,
+    "orientation": "square"
+  },
+  {
+    "filename": "sadhana-pci-0156.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 275.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-02002.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 157.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-0209.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 246.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-0578.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 122.8,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-0599.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 175.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-08752.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 147.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-08912.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 129.8,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-09912.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 191.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-10072.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 206.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-11272.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 248.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-12002.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 162.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-1272.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 218.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-1313.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 291.1,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-1478.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 213.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-39992.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 206.0,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-pci-46212.jpg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 350.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-portrait-01.jpg",
+    "width": 800,
+    "height": 1067,
+    "format": "JPEG",
+    "size_kb": 161.1,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "sadhana-portrait-02.jpg",
+    "width": 800,
+    "height": 1067,
+    "format": "JPEG",
+    "size_kb": 290.8,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "sadhana-portrait-03.jpg",
+    "width": 800,
+    "height": 1067,
+    "format": "JPEG",
+    "size_kb": 212.0,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "sadhana-portrait-04.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 244.1,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-portrait-05.jpg",
+    "width": 1100,
+    "height": 734,
+    "format": "JPEG",
+    "size_kb": 157.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-portrait-06.jpg",
+    "width": 800,
+    "height": 1067,
+    "format": "JPEG",
+    "size_kb": 151.6,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "sadhana-portrait-07.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 190.8,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-portrait-08.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 187.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-portrait-09.jpg",
+    "width": 534,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 47.4,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "sadhana-portrait-10.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 321.1,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-portrait-11.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 321.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-post-01.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 350.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-post-05.jpg",
+    "width": 1100,
+    "height": 734,
+    "format": "JPEG",
+    "size_kb": 309.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-post-06.jpg",
+    "width": 1100,
+    "height": 734,
+    "format": "JPEG",
+    "size_kb": 256.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-swami-kashi.jpeg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 83.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "sadhana-whatsapp-01.jpeg",
+    "width": 640,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 126.3,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "sadhana-whatsapp-02.jpeg",
+    "width": 640,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 112.2,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "teacher-01.jpg",
+    "width": 800,
+    "height": 1067,
+    "format": "JPEG",
+    "size_kb": 161.1,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "teacher-02.jpg",
+    "width": 800,
+    "height": 1067,
+    "format": "JPEG",
+    "size_kb": 290.8,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "teacher-03.jpg",
+    "width": 800,
+    "height": 1067,
+    "format": "JPEG",
+    "size_kb": 212.0,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "teacher-04.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 244.1,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "teacher-05.jpg",
+    "width": 1100,
+    "height": 734,
+    "format": "JPEG",
+    "size_kb": 157.5,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "teacher-06.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 321.1,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "teacher-07.jpg",
+    "width": 1067,
+    "height": 800,
+    "format": "JPEG",
+    "size_kb": 321.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "teacher-swami-kashi.jpeg",
+    "width": 1100,
+    "height": 733,
+    "format": "JPEG",
+    "size_kb": 83.4,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "yoga-asana-01.jpg",
+    "width": 1518,
+    "height": 682,
+    "format": "JPEG",
+    "size_kb": 67.2,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "yoga-asana-02.jpg",
+    "width": 1500,
+    "height": 950,
+    "format": "JPEG",
+    "size_kb": 313.9,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "yoga-asana-03.jpg",
+    "width": 1638,
+    "height": 2048,
+    "format": "JPEG",
+    "size_kb": 573.9,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "yoga-asana-04.jpg",
+    "width": 1500,
+    "height": 2250,
+    "format": "JPEG",
+    "size_kb": 240.1,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "yoga-asana-05.jpeg",
+    "width": 1024,
+    "height": 1536,
+    "format": "JPEG",
+    "size_kb": 91.1,
+    "orientation": "portrait"
+  },
+  {
+    "filename": "yoga-asana-06.jpg",
+    "width": 2500,
+    "height": 1660,
+    "format": "JPEG",
+    "size_kb": 404.8,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "yoga-asana-07.jpg",
+    "width": 2500,
+    "height": 1667,
+    "format": "JPEG",
+    "size_kb": 404.3,
+    "orientation": "landscape"
+  },
+  {
+    "filename": "yoga-asana-08.jpg",
+    "width": 2500,
+    "height": 1667,
+    "format": "JPEG",
+    "size_kb": 695.5,
+    "orientation": "landscape"
+  }
+]
