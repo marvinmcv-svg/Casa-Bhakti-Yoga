@@ -6,6 +6,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-clay: var(--clay);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-espresso: var(--espresso);
   --font-sans: var(--font-jost);
   --font-serif: var(--font-cormorant);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -57,7 +62,7 @@
   --secondary: oklch(0.92 0.025 75);
   --secondary-foreground: oklch(0.30 0.02 50);
   --muted: oklch(0.92 0.018 75);
-  --muted-foreground: oklch(0.50 0.02 55);
+  --muted-foreground: oklch(0.42 0.025 55);
   --accent: oklch(0.62 0.05 130);               /* sage green */
   --accent-foreground: oklch(0.98 0.01 75);
   --destructive: oklch(0.58 0.18 25);
@@ -98,7 +103,7 @@
   --secondary: oklch(0.33 0.02 50);
   --secondary-foreground: oklch(0.95 0.015 75);
   --muted: oklch(0.33 0.02 50);
-  --muted-foreground: oklch(0.72 0.015 75);
+  --muted-foreground: oklch(0.78 0.015 75);
   --accent: oklch(0.55 0.06 130);
   --accent-foreground: oklch(0.95 0.015 75);
   --destructive: oklch(0.65 0.19 25);
@@ -122,18 +127,22 @@
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-jost), system-ui, sans-serif;
+    font-weight: 400;
     overflow-x: hidden;
+    letter-spacing: -0.005em;
   }
   h1, h2, h3, h4, h5, .font-serif {
     font-family: var(--font-cormorant), Georgia, serif;
     font-weight: 500;
     letter-spacing: -0.01em;
   }
+  p { font-weight: 400; }
   ::selection {
     background: var(--clay);
     color: var(--cream);
@@ -160,18 +169,6 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  .text-clay { color: var(--clay); }
-  .text-sage { color: var(--sage); }
-  .text-gold { color: var(--gold); }
-  .text-espresso { color: var(--espresso); }
-  .bg-clay { background-color: var(--clay); }
-  .bg-sage { background-color: var(--sage); }
-  .bg-gold { background-color: var(--gold); }
-  .bg-espresso { background-color: var(--espresso); }
-  .bg-cream { background-color: var(--cream); }
-  .border-clay { border-color: var(--clay); }
-  .border-sage { border-color: var(--sage); }
 
   /* Grain overlay */
   .grain-overlay::before {

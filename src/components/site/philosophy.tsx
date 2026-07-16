@@ -19,9 +19,7 @@ export function Philosophy() {
   return (
     <section className="relative overflow-hidden bg-espresso py-24 text-cream sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="[&_*]:!text-cream/70">
-          <ChapterIcon id="philosophy" label={c("philosophy.eyebrow", "002 — Tradition")} />
-        </div>
+        <ChapterIcon id="philosophy" label={c("philosophy.eyebrow", "002 — Tradition")} variant="light" />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -30,7 +28,7 @@ export function Philosophy() {
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
-            <p className="max-w-xl text-base leading-relaxed text-cream/70 sm:text-lg">
+            <p className="max-w-xl text-base leading-relaxed text-cream sm:text-lg">
               {c("philosophy.body")}
             </p>
           </div>
@@ -56,7 +54,7 @@ export function Philosophy() {
                 </motion.div>
               </div>
               <h3 className="font-serif text-2xl text-cream">{p.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-cream/60">{p.desc}</p>
+              <p className="mt-3 text-sm leading-relaxed text-cream">{p.desc}</p>
               <div className="mt-8 h-px w-0 bg-clay transition-all duration-700 group-hover:w-full" />
             </Reveal>
           ))}

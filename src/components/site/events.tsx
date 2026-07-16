@@ -20,9 +20,7 @@ export function Events() {
   return (
     <section id="events" className="bg-espresso py-24 text-cream sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="[&_*]:!text-cream/70">
-          <ChapterIcon id="events" label={c("events.eyebrow", "006 — Events")} />
-        </div>
+        <ChapterIcon id="events" label={c("events.eyebrow", "006 — Events")} variant="light" />
 
         <div className="mt-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="lg:max-w-2xl">
@@ -32,7 +30,7 @@ export function Events() {
               split="word"
               className="font-serif text-4xl font-light leading-[1.05] text-cream sm:text-5xl lg:text-6xl"
             />
-            <p className="mt-6 max-w-md text-base leading-relaxed text-cream/70 sm:text-lg">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-cream sm:text-lg">
               {c("events.body")}
             </p>
           </div>
@@ -119,8 +117,8 @@ function FeaturedEventCard({
         </div>
         <div className="p-6 sm:p-8">
           <h3 className="font-serif text-2xl text-cream sm:text-3xl">{title}</h3>
-          <p className="mt-3 text-sm leading-relaxed text-cream/70">{desc}</p>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-cream/60">
+          <p className="mt-3 text-sm leading-relaxed text-cream">{desc}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-cream/75">
             <span>{location}</span>
             <span className="h-1 w-1 rounded-full bg-clay" />
             <span>{price}</span>
@@ -162,9 +160,9 @@ function CompactEvent({
       </div>
       <div className="col-span-9 sm:col-span-6">
         <div className="font-serif text-lg text-cream sm:text-xl">{title}</div>
-        <div className="mt-0.5 text-xs text-cream/50">{location}</div>
+        <div className="mt-0.5 text-xs text-cream/70">{location}</div>
       </div>
-      <div className="col-span-12 text-xs uppercase tracking-[0.2em] text-cream/60 sm:col-span-4 sm:text-right">
+      <div className="col-span-12 text-xs uppercase tracking-[0.2em] text-cream/75 sm:col-span-4 sm:text-right">
         {price} <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
       </div>
     </a>

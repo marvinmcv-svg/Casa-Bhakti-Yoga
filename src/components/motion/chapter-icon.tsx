@@ -4,11 +4,20 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 // Hobokenyogi "chapter-icon": 5 wave-circles that fan out into a diagonal arc on scroll.
-export function ChapterIcon({ id, label }: { id: string; label: string }) {
+export function ChapterIcon({
+  id,
+  label,
+  variant = "dark",
+}: {
+  id: string;
+  label: string;
+  variant?: "dark" | "light";
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
   const rotations = [135, 150, 165, 180, 195];
+  const labelTextClass = variant === "light" ? "text-cream/70" : "text-muted-foreground";
 
   return (
     <div ref={ref} className="flex items-center gap-5">
@@ -39,12 +48,12 @@ export function ChapterIcon({ id, label }: { id: string; label: string }) {
               ease: [0.215, 0.61, 0.355, 1],
             }}
           >
-            <WaveCircle />
+            <WaveCircle variant={variant} />
           </motion.span>
         ))}
       </div>
       <motion.span
-        className="text-xs uppercase tracking-[0.3em] text-muted-foreground"
+        className={`text-xs uppercase tracking-[0.3em] ${labelTextClass}`}
         initial={{ opacity: 0, x: -10 }}
         animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
         transition={{ duration: 0.8, delay: 0.6 }}
@@ -55,7 +64,8 @@ export function ChapterIcon({ id, label }: { id: string; label: string }) {
   );
 }
 
-function WaveCircle() {
+function WaveCircle({ variant }: { variant: "dark" | "light" }) {
+  const strokeClass = variant === "light" ? "text-cream" : "text-clay";
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <circle
@@ -64,14 +74,14 @@ function WaveCircle() {
         r="10"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-clay"
+        className={strokeClass}
       />
       <path
         d="M4 12 Q 8 6, 12 12 T 20 12"
         stroke="currentColor"
         strokeWidth="1"
         fill="none"
-        className="text-clay"
+        className={strokeClass}
       />
     </svg>
   );

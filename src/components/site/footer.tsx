@@ -39,7 +39,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-5">
             <h2 className="font-serif text-4xl">Casa Bhakti</h2>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-cream/60">
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-cream/80">
               {c("footer.tagline", "Templo de Yoga & Vedanta · Santa Cruz, Bolivia")}
             </p>
             <div className="mt-6 flex gap-3">
@@ -92,7 +92,7 @@ export function Footer() {
             <h3 className="text-[10px] uppercase tracking-[0.3em] text-cream/40">
               {c("footer.newsletterTitle", "Join our circle")}
             </h3>
-            <p className="mt-5 text-sm leading-relaxed text-cream/60">
+            <p className="mt-5 text-sm leading-relaxed text-cream/80">
               {t("contact.newsletterDesc")}
             </p>
             <form onSubmit={subscribe} className="mt-5 flex gap-2">
@@ -117,7 +117,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-cream/10 pt-8 text-[10px] uppercase tracking-[0.2em] text-cream/40 sm:flex-row sm:items-center">
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-cream/10 pt-8 text-[10px] uppercase tracking-[0.2em] text-cream/60 sm:flex-row sm:items-center">
           <div>
             © {new Date().getFullYear()} Casa Bhakti. {t("footer.rights")}
           </div>

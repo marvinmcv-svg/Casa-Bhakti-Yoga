@@ -13,6 +13,8 @@ import { Events } from "@/components/site/events";
 import { Gallery } from "@/components/site/gallery";
 import { Contact } from "@/components/site/contact";
 import { Footer } from "@/components/site/footer";
+import { ShirleyWidget } from "@/components/site/shirley-widget";
+import { WhatsAppWidget } from "@/components/site/whatsapp-widget";
 import { motion } from "framer-motion";
 
 export function SiteShell() {
@@ -42,6 +44,8 @@ export function SiteShell() {
         <Contact />
       </main>
       <Footer />
+      <ShirleyWidget />
+      <WhatsAppWidget />
       {isLoading && (
         <motion.div
           initial={{ opacity: 1 }}

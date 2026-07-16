@@ -85,7 +85,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="mb-6 text-[10px] uppercase tracking-[0.4em] text-cream/70"
+            className="mb-6 text-[10px] font-medium uppercase tracking-[0.4em] text-cream [text-shadow:0_2px_16px_rgba(0,0,0,0.7)]"
           >
             Santa Cruz · Bolivia
           </motion.p>

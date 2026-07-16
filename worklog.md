@@ -690,3 +690,55 @@ Stage Summary:
 - Verified: bilingual ES/EN toggle, all 10 animated sections, schedule day-tabs, gallery drag+lightbox (with Escape), contact→WhatsApp, mobile responsive, sticky footer, admin auth+session persistence, full CRUD on content/classes/schedule/events/teachers/gallery, media library
 - Final clean data state: 54 content fields, 5 classes, 15 sessions, 3 events, 3 teachers, 12 gallery items
 - Default admin: admin / casabhakti2024
+
+---
+Task ID: 7
+Agent: main (Z.ai Code orchestrator) — Observations fix round
+Task: Fix readability, add Shirley AI receptionist, add WhatsApp booking widget
+
+Work Log:
+1. READABILITY FIXES:
+   - Root cause found: custom brand color utilities (.text-cream, .text-clay, etc.) defined in @layer utilities were NOT being processed by Tailwind v4, causing ALL dark-section text to fall back to dark foreground color (dark-on-dark = invisible)
+   - Fix: registered brand colors in @theme inline as --color-cream, --color-clay, --color-sage, --color-gold, --color-espresso so Tailwind generates proper text-cream/bg-clay/etc. utilities with opacity modifier support
+   - Removed redundant manual utility classes from @layer utilities
+   - Darkened --muted-foreground token from oklch(0.50) to oklch(0.42) for better contrast on light sections
+   - Bumped dark-mode --muted-foreground from oklch(0.72) to oklch(0.78)
+   - Strengthened base typography: body font-weight 400, -moz-osx-font-smoothing: grayscale, letter-spacing optimization
+   - Bumped dark-section body text to full text-cream (100% opacity) for Philosophy + Events sections
+   - Fixed ChapterIcon component: added variant="light" prop for dark backgrounds (was using text-muted-foreground which is dark on dark sections)
+   - Bumped hero tagline to text-cream (100%) with stronger text-shadow
+   - Bumped footer body text from cream/60 to cream/80
+   - Verified WCAG contrast: dark sections 13.1:1 (AAA), light sections 5.4:1 (AA) — both pass
+
+2. SHIRLEY AI RECEPTIONIST:
+   - Backend: /api/chat route using z-ai-web-dev-sdk (LLM skill)
+   - System prompt: Shirley is the warm, spiritual receptionist at Casa Bhakti
+   - Sales funnel: greet → understand need → recommend class → guide to book via WhatsApp
+   - Context: dynamically fetches live site data (classes, schedule, events, teachers, pricing) from DB
+   - Bilingual: responds in ES or EN based on client lang param
+   - Knows: class types, weekly schedule, prices (50 Bs single, 450 Bs month), Sunday community day, teacher training, philosophy
+   - Always offers WhatsApp (https://wa.me/59167394998) for booking/human questions
+   - Widget UI: floating button (bottom-right) with online indicator, chat panel with message history, typing dots animation, quick-reply chips, green "Reservar por WhatsApp" CTA button that appears when Shirley mentions booking, conversation persisted in localStorage
+   - Tested: beginner recommendation (Hatha Yoga + schedule), pricing FAQ (50 Bs/450 Bs), booking handoff (WhatsApp CTA appeared)
+
+3. WHATSAPP WIDGET:
+   - Floating green button (bottom-left, separate from Shirley to avoid overlap)
+   - Pulsing ring animation + auto-appearing tooltip bubble after 4s ("¿List@ para practutar?")
+   - Click opens WhatsApp with prefilled booking message
+   - Tooltip dismissible (persists in localStorage)
+   - Hover label "Reserva tu clase"
+
+AUDIT (Agent Browser):
+- Homepage loads, 0 console errors, 0 runtime errors
+- Shirley button + WhatsApp button both visible
+- Shirley chat: sent "soy principiante" → got Hatha Yoga recommendation with schedule → sent "quiero reservar" → got WhatsApp handoff + green CTA button appeared
+- Shirley pricing FAQ: "Una clase suelta cuesta 50 Bs. También tienes la opción de una mensualidad a 450 Bs" ✦
+- WhatsApp widget: click opened api.whatsapp.com with prefilled message to +59167394998 ✓
+- Readability: contrast ratios verified programmatically (13.1:1 dark, 5.4:1 light — both WCAG compliant)
+- Lint: 0 errors, 0 warnings
+
+Stage Summary:
+- All 3 observations fixed and audited
+- Readability: root cause was Tailwind v4 not processing @layer utilities custom classes → fixed by registering in @theme inline
+- Shirley: full AI receptionist with LLM backend, live site data context, sales funnel, bilingual, WhatsApp handoff
+- WhatsApp: standalone booking widget with tooltip, prefilled message, pulse animation
