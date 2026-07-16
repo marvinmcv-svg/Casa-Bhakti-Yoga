@@ -782,3 +782,70 @@ Stage Summary:
 - Desktop: animations optimized (3x better max frame time) with visuals preserved exactly
 - Mobile: hero now uses the uploaded devotional video as background (auto-playing, looped, muted, inline)
 - Smart asset loading: video only on mobile, images only on desktop (no wasted bandwidth)
+
+---
+Task ID: 9
+Agent: main (Z.ai Code orchestrator) — Copywriter + video brightness + full audit
+Task: Restore video brightness, improve mobile copy, hire LLM copywriter, world-class full-stack audit
+
+Work Log:
+1. VIDEO BRIGHTNESS RESTORED:
+   - Root cause: hero had 2 stacked overlays (gradient + flat bg-espresso/25) darkening the video on ALL viewports
+   - Fix: made overlays responsive — mobile gets only a subtle bottom-half gradient (from-espresso via-espresso/40 to-transparent) so the video shows at original brightness; desktop keeps the fuller overlay (images need more help)
+   - VLM verified: video brightness 8/10, text readability 9/10 on mobile
+
+2. WORLD-CLASS COPYWRITER (LLM):
+   - Wrote scripts/copywriter.ts using z-ai-web-dev-sdk
+   - System prompt: world-class copywriter hired by Casa Bhakti, with full context (founded 2018, Sivananda lineage, 4 paths, Sunday community day, prices, Bolivian pride, bilingual, concise for mobile video hero)
+   - LLM rewrote all 54 content fields
+   - Fixed 26+ ES/EN swapped fields via detection script (LLM had swapped en/es values for many entries)
+   - Updated default-content.ts with all improved copy
+   - Force-reseeded database (scripts/reseed.ts) so the live site shows the new copy
+   - Key improvements: hero "Yoga/Vedanta/Devotion" → "Tu espacio / de silencio / y devoción" (poetic, lets video breathe); intro "Yoga is a way of seeing life" → "More than a yoga studio / Más que un yoga studio"; schedule "Weekly schedule" → "Your week at the temple / Tu semana en el templo"
+
+3. WORLD-CLASS FULL-STACK AUDIT (3 rounds, Agent Browser):
+   Round 1 (desktop public site):
+   - All 7 nav links work (about, classes, schedule, teachers, events, gallery, contact)
+   - Language toggle ES↔EN works (headings switch correctly)
+   - Schedule day tabs all work (7 days)
+   - Gallery lightbox opens + Escape closes ✓
+   - Contact form → opens WhatsApp with prefilled message ✓
+   - Shirley chat: sent "que clases tienen" → got detailed class recommendations ✓
+   - 0 console errors after fixing infinite loop (see below)
+   
+   Round 2 (admin portal):
+   - Login (admin/casabhakti2024) → dashboard ✓
+   - Content Editor loads all 80 inputs with new copy ✓
+   - Classes manager: 5 classes listed, edit dialog opens with populated fields ✓, create test class (5→6), delete (6→5) ✓
+   - Schedule manager: 7 days grouped, 15 sessions ✓
+   - Events manager: 3 events listed ✓
+   - Teachers manager: 3 teachers listed ✓
+   - Gallery manager: 12 items, add dialog + media picker (106 images) ✓
+   - View Site link → navigates to / ✓
+   - Logout → returns to login ✓
+   
+   Round 3 (mobile):
+   - Video hero plays at original brightness ✓
+   - Mobile menu opens with all 7 nav links ✓
+   - Menu link navigates correctly ✓
+   - Shirley chat opens on mobile ✓
+   - WhatsApp widget opens WhatsApp ✓
+   
+   BUG FOUND & FIXED: "Maximum update depth exceeded" infinite loop in ShirleyWidget
+   - Root cause: useEffect that updates greeting when language changed had `messages` and `greeting` in deps, and called setMessages creating a new array every render → infinite loop
+   - Fix: added prevLangRef to only run the update when lang actually changes, early-return otherwise
+   - Verified: 0 console errors after fix, Shirley still works correctly
+
+FINAL STATE:
+- Lint: 0 errors, 0 warnings
+- Console: 0 errors
+- Dev log: clean (no runtime errors)
+- All buttons and features working on desktop + mobile + admin
+- Copy: world-class, bilingual, concise on mobile
+- Video: original brightness on mobile
+
+Stage Summary:
+- Video brightness restored (mobile shows video at full brightness, desktop keeps darker overlay for images)
+- Copy rewritten by LLM copywriter across all 54 fields (poetic, concise, Bolivian, sales-aware)
+- Fixed critical infinite-loop bug in ShirleyWidget (was causing runtime errors)
+- Triple-checked: 3 audit rounds, all features verified working

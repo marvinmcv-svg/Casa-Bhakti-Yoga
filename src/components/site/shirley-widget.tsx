@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "@/lib/i18n";
+import { useLanguage, type Lang } from "@/lib/i18n";
 import { Send, X, Sparkles, Flower2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -39,6 +39,7 @@ export function ShirleyWidget() {
   const [hasGreeted, setHasGreeted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const prevLangRef = useRef<Lang>(lang);
 
   const greeting =
     lang === "es"
@@ -90,8 +91,10 @@ export function ShirleyWidget() {
     }
   }, [open]);
 
-  // Update greeting language if only the greeting exists
+  // Update greeting language when lang changes (only if greeting is the only message)
   useEffect(() => {
+    if (prevLangRef.current === lang) return;
+    prevLangRef.current = lang;
     if (hasGreeted && messages.length === 1 && messages[0].role === "assistant") {
       setMessages([{ role: "assistant", content: greeting, ts: Date.now() }]);
     }

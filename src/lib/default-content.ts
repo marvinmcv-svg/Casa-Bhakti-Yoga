@@ -3,142 +3,103 @@ import { db } from "@/lib/db";
 // All default Casa Bhakti content, bilingual, using REAL scraped imagery.
 // The admin can edit every field of this afterward.
 
-const SITE_CONTENT: Record<string, { en: string; es: string }> = {
-  "nav.brand": { en: "Casa Bhakti", es: "Casa Bhakti" },
-  "hero.line1": { en: "Yoga", es: "Yoga" },
-  "hero.line2": { en: "Vedanta", es: "Vedanta" },
-  "hero.line3": { en: "Devotion", es: "Bhakti" },
-  "hero.subtitle": {
-    en: "A temple of Yoga & Vedanta in Santa Cruz de la Sierra, Bolivia. Rooted in the tradition of Swami Sivananda.",
-    es: "Un templo de Yoga & Vedanta en Santa Cruz de la Sierra, Bolivia. Enraizado en la tradición de Swami Sivananda.",
-  },
-  "intro.eyebrow": { en: "001 — About", es: "001 — Sobre Nosotros" },
-  "intro.title": {
-    en: "Yoga is a way of seeing life.",
-    es: "El yoga es una forma de ver la vida.",
-  },
-  "intro.body": {
-    en: "Sometimes we believe yoga is only postures on a mat, but in reality it is a way of seeing life. At Casa Bhakti we explore these teachings every day — devotion, service, meditation and wisdom, woven together in the heart of Bolivia.",
-    es: "A veces creemos que el yoga es solo posturas en un mat, pero en realidad es una forma de ver la vida. En Casa Bhakti exploramos estas enseñanzas todos los días — devoción, servicio, meditación y sabiduría, tejidas juntas en el corazón de Bolivia.",
-  },
-  "intro.meetLink": { en: "Meet our teachers", es: "Conoce a nuestros maestros" },
-  "intro.stat1.value": { en: "2018", es: "2018" },
-  "intro.stat1.label": { en: "Founded", es: "Fundada" },
-  "intro.stat2.value": { en: "11+", es: "11+" },
-  "intro.stat2.label": { en: "Years of practice", es: "Años de práctica" },
-  "intro.stat3.value": { en: "200h", es: "200h" },
-  "intro.stat3.label": { en: "Teacher training", es: "Formación de profesores" },
-  "philosophy.eyebrow": { en: "002 — Tradition", es: "002 — Tradición" },
-  "philosophy.title": {
-    en: "The four paths of yoga",
-    es: "Los cuatro caminos del yoga",
-  },
-  "philosophy.body": {
-    en: "Based on the teachings of Swami Sivananda, we walk the four classical paths — each a doorway to the same truth.",
-    es: "Basados en las enseñanzas de Swami Sivananda, caminamos los cuatro caminos clásicos — cada uno una puerta hacia la misma verdad.",
-  },
-  "philosophy.path1.title": { en: "Karma Yoga", es: "Karma Yoga" },
-  "philosophy.path1.desc": {
-    en: "The path of selfless service. Acting without attachment to the fruit of action.",
-    es: "El camino del servicio desinteresado. Actuar sin apego al fruto de la acción.",
-  },
-  "philosophy.path2.title": { en: "Bhakti Yoga", es: "Bhakti Yoga" },
-  "philosophy.path2.desc": {
-    en: "The path of devotion. Opening the heart through chanting, prayer and love.",
-    es: "El camino de la devoción. Abrir el corazón a través del canto, la oración y el amor.",
-  },
-  "philosophy.path3.title": { en: "Raja Yoga", es: "Raja Yoga" },
-  "philosophy.path3.desc": {
-    en: "The path of meditation. Turning inward to still the waves of the mind.",
-    es: "El camino de la meditación. Volverse hacia adentro para aquietar las olas de la mente.",
-  },
-  "philosophy.path4.title": { en: "Jnana Yoga", es: "Jnana Yoga" },
-  "philosophy.path4.desc": {
-    en: "The path of wisdom. Inquiry into the nature of the Self through Vedanta.",
-    es: "El camino de la sabiduría. Indagación sobre la naturaleza del Ser a través del Vedanta.",
+export const SITE_CONTENT: Record<string, { en: string; es: string }> = {
+  "classes.body": {
+    en: "From a gentle Hatha to a devotional Kirtan, every class is an invitation to return to yourself.",
+    es: "Desde un Hatha suave hasta un Kirtan devocional, cada clase es una invitación a regresar a ti mismo.",
   },
   "classes.eyebrow": { en: "003 — Classes", es: "003 — Clases" },
-  "classes.title": {
-    en: "Practice with us",
-    es: "Practica con nosotros",
+  "classes.title": { en: "Practice with us", es: "Practica con nosotros" },
+  "contact.body": {
+    en: "We are in Santa Cruz de la Sierra, Bolivia. Reach out by WhatsApp to reserve your spot or ask anything.",
+    es: "Estamos en Santa Cruz de la Sierra, Bolivia. Escríbenos por WhatsApp para reservar tu lugar o preguntar lo que necesites.",
   },
-  "classes.body": {
-    en: "From gentle Hatha to devotional Kirtan, every offering is an invitation to come home to yourself.",
-    es: "Desde el suave Hasta hasta el devocional Kirtan, cada propuesta es una invitación a volver a casa, a ti mismo.",
+  "contact.eyebrow": { en: "008 — Visit", es: "008 — Visítanos" },
+  "contact.facebookUrl": { en: "https://www.facebook.com/casabhaktiscz", es: "https://www.facebook.com/casabhaktiscz" },
+  "contact.instagram": { en: "@casabhakti.scz", es: "@casabhakti.scz" },
+  "contact.instagramUrl": { en: "https://www.instagram.com/casabhakti.scz/?hl=es", es: "https://www.instagram.com/casabhakti.scz/?hl=es" },
+  "contact.phone1": { en: "+591 67394998", es: "+591 67394998" },
+  "contact.phone2": { en: "+591 67409052", es: "+591 67409052" },
+  "contact.title": { en: "Come practice with us", es: "Ven a practicar con nosotros" },
+  "events.body": {
+    en: "Retreats, trainings, and gatherings that deepen your practice and connection.",
+    es: "Retiros, formaciones y encuentros que profundizan tu práctica y conexión.",
   },
-  "schedule.eyebrow": { en: "004 — Schedule", es: "004 — Horarios" },
-  "schedule.title": {
-    en: "Weekly schedule",
-    es: "Horario semanal",
+  "events.eyebrow": { en: "006 — Events", es: "006 — Eventos" },
+  "events.title": { en: "Special gatherings", es: "Encuentros especiales" },
+  "footer.address": { en: "Santa Cruz de la Sierra, Bolivia", es: "Santa Cruz de la Sierra, Bolivia" },
+  "footer.newsletterTitle": { en: "Join our circle", es: "Únete a nuestro círculo" },
+  "footer.tagline": { en: "Templo de Yoga & Vedanta · Santa Cruz, Bolivia", es: "Templo de Yoga & Vedanta · Santa Cruz, Bolivia" },
+  "gallery.body": {
+    en: "Moments of practice, devotion, and community, captured in Santa Cruz.",
+    es: "Momentos de práctica, devoción y comunidad, capturados en Santa Cruz.",
   },
-  "schedule.body": {
-    en: "Join us in person or online. Sundays are our community day — meditation, yoga, Vedanta philosophy and kirtan.",
-    es: "Acompáñanos presencial o en línea. Los domingos es nuestro día de comunidad — meditación, yoga, filosofía Vedanta y kirtan.",
+  "gallery.eyebrow": { en: "007 — Gallery", es: "007 — Galería" },
+  "gallery.title": { en: "Life at the temple", es: "Vida en el templo" },
+  "hero.line1": { en: "Tu espacio", es: "Tu espacio" },
+  "hero.line2": { en: "de silencio", es: "de silencio" },
+  "hero.line3": { en: "y devoción", es: "y devoción" },
+  "hero.subtitle": {
+    en: "A temple of yoga and wisdom in the heart of Santa Cruz.",
+    es: "Un templo de yoga y sabiduría en el corazón de Santa Cruz.",
   },
+  "intro.body": {
+    en: "Casa Bhakti is a sanctuary where yoga is lived, not just practiced. A place to find your center, connect with your essence, and grow in community, right here in Santa Cruz.",
+    es: "Casa Bhakti es un refugio donde el yoga se vive, no solo se practica. Es un lugar para encontrar tu centro, conectar con tu esencia y crecer en comunidad, aquí en Santa Cruz.",
+  },
+  "intro.eyebrow": { en: "001 — About Us", es: "001 — Sobre Nosotros" },
+  "intro.meetLink": { en: "Meet our teachers", es: "Conoce a nuestros maestros" },
+  "intro.stat1.label": { en: "Founded", es: "Fundada" },
+  "intro.stat1.value": { en: "2018", es: "2018" },
+  "intro.stat2.label": { en: "Years of practice", es: "Años de práctica" },
+  "intro.stat2.value": { en: "11+", es: "11+" },
+  "intro.stat3.label": { en: "Teacher training", es: "Formación de profesores" },
+  "intro.stat3.value": { en: "200h", es: "200h" },
+  "intro.title": { en: "More than a yoga studio.", es: "Más que un yoga studio." },
+  "nav.brand": { en: "Casa Bhakti", es: "Casa Bhakti" },
+  "philosophy.body": {
+    en: "Following Swami Sivananda, these four paths are trails that converge on the same inner truth.",
+    es: "Siguiendo a Swami Sivananda, estos cuatro caminos son senderos que convergen en la misma verdad interior.",
+  },
+  "philosophy.eyebrow": { en: "002 — Tradition", es: "002 — Tradición" },
+  "philosophy.path1.desc": {
+    en: "The path of selfless service. Acting without expecting the fruit.",
+    es: "El camino del servicio desinteresado. Actuar sin esperar el fruto.",
+  },
+  "philosophy.path1.title": { en: "Karma Yoga", es: "Karma Yoga" },
+  "philosophy.path2.desc": {
+    en: "The path of devotion. Opening the heart through song and love.",
+    es: "El camino de la devoción. Abrir el corazón con canto y amor.",
+  },
+  "philosophy.path2.title": { en: "Bhakti Yoga", es: "Bhakti Yoga" },
+  "philosophy.path3.desc": {
+    en: "The path of meditation. Calming the waves of the mind to see the depths.",
+    es: "El camino de la meditación. Calmar las olas de la mente para ver el fondo.",
+  },
+  "philosophy.path3.title": { en: "Raja Yoga", es: "Raja Yoga" },
+  "philosophy.path4.desc": {
+    en: "The path of wisdom. Inquiring into the nature of your true Self.",
+    es: "El camino de la sabiduría. Indagar en la naturaleza de tu Ser verdadero.",
+  },
+  "philosophy.path4.title": { en: "Jnana Yoga", es: "Jnana Yoga" },
+  "philosophy.title": { en: "The four paths of yoga", es: "Los cuatro caminos del yoga" },
+  "quote.author": { en: "Swami Sivananda", es: "Swami Sivananda" },
   "quote.text": {
     en: "Health is wealth. Peace of mind is happiness. Yoga shows the way.",
     es: "La salud es riqueza. La paz mental es felicidad. Yoga muestra el camino.",
   },
-  "quote.author": { en: "Swami Sivananda", es: "Swami Sivananda" },
-  "teachers.eyebrow": { en: "005 — Teachers", es: "005 — Maestros" },
-  "teachers.title": {
-    en: "Guides on the path",
-    es: "Guías en el camino",
+  "schedule.body": {
+    en: "We await you to live yoga in community. Sundays are special: meditation, asana, philosophy and kirtan.",
+    es: "Te esperamos para vivir el yoga en comunidad. Los domingos son especiales: meditación, asana, filosofía y kirtan.",
   },
+  "schedule.eyebrow": { en: "004 — Schedule", es: "004 — Horarios" },
+  "schedule.title": { en: "Your week at the temple", es: "Tu semana en el templo" },
   "teachers.body": {
     en: "Our teachers walk the path before they share it. Trained in the Sivananda lineage and devoted to the heart.",
     es: "Nuestros maestros caminan el camino antes de compartirlo. Formados en el linaje Sivananda y entregados al corazón.",
   },
-  "events.eyebrow": { en: "006 — Events", es: "006 — Eventos" },
-  "events.title": {
-    en: "Special gatherings",
-    es: "Encuentros especiales",
-  },
-  "events.body": {
-    en: "Retreats, teacher trainings and community gatherings that deepen the practice.",
-    es: "Retiros, formaciones de profesores y encuentros comunitarios que profundizan la práctica.",
-  },
-  "gallery.eyebrow": { en: "007 — Gallery", es: "007 — Galería" },
-  "gallery.title": {
-    en: "Life at the temple",
-    es: "La vida en el templo",
-  },
-  "gallery.body": {
-    en: "Moments of practice, devotion and community — captured in Santa Cruz.",
-    es: "Momentos de práctica, devoción y comunidad — capturados en Santa Cruz.",
-  },
-  "contact.eyebrow": { en: "008 — Visit", es: "008 — Visítanos" },
-  "contact.title": {
-    en: "Come practice with us",
-    es: "Ven a practicar con nosotros",
-  },
-  "contact.body": {
-    en: "We are in Santa Cruz de la Sierra, Bolivia. Reach out by WhatsApp to reserve your place or ask anything.",
-    es: "Estamos en Santa Cruz de la Sierra, Bolivia. Escríbenos por WhatsApp para reservar tu lugar o preguntar lo que necesites.",
-  },
-  "contact.phone1": { en: "+591 67394998", es: "+591 67394998" },
-  "contact.phone2": { en: "+591 67409052", es: "+591 67409052" },
-  "contact.instagram": { en: "@casabhakti.scz", es: "@casabhakti.scz" },
-  "contact.instagramUrl": {
-    en: "https://www.instagram.com/casabhakti.scz/?hl=es",
-    es: "https://www.instagram.com/casabhakti.scz/?hl=es",
-  },
-  "contact.facebookUrl": {
-    en: "https://www.facebook.com/casabhaktiscz",
-    es: "https://www.facebook.com/casabhaktiscz",
-  },
-  "footer.tagline": {
-    en: "Templo de Yoga & Vedanta · Santa Cruz, Bolivia",
-    es: "Templo de Yoga & Vedanta · Santa Cruz, Bolivia",
-  },
-  "footer.newsletterTitle": {
-    en: "Join our circle",
-    es: "Únete a nuestro círculo",
-  },
-  "footer.address": {
-    en: "Santa Cruz de la Sierra, Bolivia",
-    es: "Santa Cruz de la Sierra, Bolivia",
-  },
+  "teachers.eyebrow": { en: "005 — Teachers", es: "005 — Maestros" },
+  "teachers.title": { en: "Guides on the path", es: "Guías en el camino" },
 };
 
 const CLASS_TYPES = [

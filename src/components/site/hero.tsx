@@ -82,9 +82,12 @@ export function Hero() {
         </motion.div>
       )}
 
-      {/* Gradient overlays (apply to both video and image) */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-espresso via-espresso/55 to-espresso/65" />
-      <div className="absolute inset-0 z-[1] bg-espresso/25" />
+      {/* Gradient overlays — responsive:
+          Mobile: video is the star, so only a subtle bottom gradient for text legibility.
+          Desktop: images need more help, keep the fuller overlay. */}
+      <div className="absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-espresso via-espresso/40 to-transparent lg:hidden" />
+      <div className="absolute inset-0 z-[1] hidden bg-gradient-to-t from-espresso via-espresso/55 to-espresso/65 lg:block" />
+      <div className="absolute inset-0 z-[1] hidden bg-espresso/25 lg:block" />
 
       {/* Spinning wave-circle accents (desktop only) */}
       <motion.div
