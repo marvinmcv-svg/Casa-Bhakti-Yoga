@@ -6,6 +6,7 @@ import { useContent } from "@/hooks/use-content";
 import { ClayButton } from "@/components/motion/clay-button";
 import { SplitText } from "@/components/motion/split-text";
 import { useLanguage } from "@/lib/i18n";
+import { HeroVideoBg } from "@/components/site/hero-video-bg";
 
 const HERO_IMAGES = [
   "/media/hero-yoga-retreat.jpg",
@@ -14,25 +15,41 @@ const HERO_IMAGES = [
   "/media/hero-kirtan.jpg",
 ];
 
+const HERO_VIDEO = "/media/hero-bhakti-video.mp4";
+const MOBILE_BREAKPOINT = 1024; // lg
+
 export function Hero() {
   const { c } = useContent();
   const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
   const [idx, setIdx] = useState(0);
 
+  // Detect viewport to render video (mobile) vs image slideshow (desktop).
+  // Avoids loading the 10MB video on desktop and the 4 images on mobile.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  // Reduced parallax intensity for smoother scrolling (was 25% / 1.15)
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   useEffect(() => {
+    if (isMobile) return; // video handles the background on mobile
     const iv = setInterval(() => setIdx((p) => (p + 1) % HERO_IMAGES.length), 6500);
     return () => clearInterval(iv);
-  }, []);
+  }, [isMobile]);
 
   const lines = [c("hero.line1", "Yoga"), c("hero.line2", "Vedanta"), c("hero.line3", "Bhakti")];
 
@@ -42,25 +59,34 @@ export function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] items-end overflow-hidden bg-espresso"
     >
-      {/* Parallax background slideshow */}
-      <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0 z-0">
-        {HERO_IMAGES.map((src, i) => (
-          <motion.img
-            key={src}
-            src={src}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-            initial={false}
-            animate={{ opacity: i === idx ? 1 : 0 }}
-            transition={{ duration: 1.8, ease: [0.215, 0.61, 0.355, 1] }}
-            loading={i === 0 ? "eager" : "lazy"}
-          />
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/55 to-espresso/65" />
-        <div className="absolute inset-0 bg-espresso/25" />
-      </motion.div>
+      {/* Background: video on mobile, image slideshow on desktop */}
+      {isMobile ? (
+        <HeroVideoBg src={HERO_VIDEO} poster={HERO_IMAGES[0]} />
+      ) : (
+        <motion.div
+          style={{ y: yBg, scale: scaleBg, willChange: "transform" }}
+          className="absolute inset-0 z-0"
+        >
+          {HERO_IMAGES.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-out-quart ${
+                i === idx ? "opacity-100" : "opacity-0"
+              }`}
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          ))}
+        </motion.div>
+      )}
 
-      {/* Spinning wave-circle accents */}
+      {/* Gradient overlays (apply to both video and image) */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-espresso via-espresso/55 to-espresso/65" />
+      <div className="absolute inset-0 z-[1] bg-espresso/25" />
+
+      {/* Spinning wave-circle accents (desktop only) */}
       <motion.div
         style={{ opacity }}
         className="pointer-events-none absolute right-8 top-32 z-10 hidden text-cream/40 lg:block"
@@ -70,7 +96,7 @@ export function Hero() {
         </div>
       </motion.div>
 
-      {/* Connect line */}
+      {/* Connect line (desktop only) */}
       <div className="pointer-events-none absolute left-8 top-32 z-10 hidden h-40 w-px lg:block">
         <div className="h-full w-px origin-top animate-pulse-line bg-cream/50" />
       </div>
@@ -84,7 +110,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
             className="mb-6 text-[10px] font-medium uppercase tracking-[0.4em] text-cream [text-shadow:0_2px_16px_rgba(0,0,0,0.7)]"
           >
             Santa Cruz · Bolivia
@@ -96,9 +122,9 @@ export function Hero() {
                 <SplitText
                   as="span"
                   text={line}
-                  delay={0.6 + li * 0.25}
-                  stagger={0.05}
-                  duration={1.3}
+                  delay={0.5 + li * 0.2}
+                  stagger={0.04}
+                  duration={0.9}
                   className={`block ${
                     li === 0
                       ? "text-[16vw] sm:text-[12vw] lg:text-[10rem] xl:text-[12rem]"
@@ -114,7 +140,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.6, duration: 1 }}
+            transition={{ delay: 1.3, duration: 0.8 }}
             className="mt-8 max-w-xl text-base text-cream/95 [text-shadow:0_2px_20px_rgba(0,0,0,0.5)] sm:text-lg"
           >
             {c("hero.subtitle")}
@@ -123,7 +149,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.9, duration: 1 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <ClayButton href="#contact" variant="clay">

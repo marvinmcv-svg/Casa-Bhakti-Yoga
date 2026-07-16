@@ -22,7 +22,7 @@ export function ParallaxImage({
   alt,
   className = "",
   imgClassName = "",
-  speed = 0.15,
+  speed = 0.12,
   priority = false,
 }: ParallaxImageProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,8 +31,9 @@ export function ParallaxImage({
     offset: ["start end", "end start"],
   });
 
+  // Reduced scale range (1.08 vs 1.12) — subtler but smoother, less repaint area
   const y = useTransform(scrollYProgress, [0, 1], [`${-speed * 100}%`, `${speed * 100}%`]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.12, 1, 1.12]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1, 1.08]);
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
@@ -40,7 +41,8 @@ export function ParallaxImage({
         src={src}
         alt={alt}
         loading={priority ? "eager" : "lazy"}
-        style={{ y, scale }}
+        // will-change promotes to a GPU layer so y/scale don't trigger layout/paint
+        style={{ y, scale, willChange: "transform" }}
         className={`h-full w-full object-cover ${imgClassName}`}
       />
     </div>

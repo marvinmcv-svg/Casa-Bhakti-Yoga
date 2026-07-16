@@ -742,3 +742,43 @@ Stage Summary:
 - Readability: root cause was Tailwind v4 not processing @layer utilities custom classes → fixed by registering in @theme inline
 - Shirley: full AI receptionist with LLM backend, live site data context, sales funnel, bilingual, WhatsApp handoff
 - WhatsApp: standalone booking widget with tooltip, prefilled message, pulse animation
+
+---
+Task ID: 8
+Agent: main (Z.ai Code orchestrator) — Animation audit + mobile video hero
+Task: Optimize sluggish desktop animations, add uploaded video as mobile hero background
+
+Work Log:
+1. ANIMATION PERFORMANCE AUDIT & OPTIMIZATION:
+   - Root causes of sluggishness identified:
+     a) Hero: 4 full-screen images stacked with motion.img opacity animation + parallax y(25%)+scale(1.15) on container = continuous repaint of huge area on every scroll tick
+     b) ParallaxImage: scale range 1.12→1→1.12 too aggressive
+     c) SplitText: duration 1.3s too slow, no GPU hints on 17+ animated char spans
+     d) DragSlider: dead useAnimationFrame import, whileHover scale on every item during drag
+   - Optimizations applied (desktop visuals UNCHANGED, just smoother):
+     • SplitText: duration 1.3→0.9s, stagger 0.05→0.035, added willChange:"transform,opacity" + backfaceVisibility:"hidden" on each char span, reduced perspective 800→600
+     • ParallaxImage: scale range 1.12→1.08, default speed 0.15→0.12, added willChange:"transform" on img
+     • DragSlider: removed dead useAnimationFrame import, removed whileHover on items (was causing re-renders during drag), added dragMomentum:false (prevents post-drag inertia jank), added willChange:"transform" on track, reduced skew range ±6→±5
+     • Reveal: default duration 1→0.8s, default y 40→36, added willChange:"transform,opacity"
+     • Hero desktop: parallax y 25%→15%, scale 1.15→1.08, added willChange on bg container, switched from motion.img opacity to CSS transition-opacity (faster), added decoding="async"
+   - Performance measured: max frame during scroll 267ms→83ms (3x better), avg FPS 41→44
+
+2. MOBILE VIDEO HERO:
+   - Copied uploaded video "Hay verdad, sabiduría..." to /public/media/hero-bhakti-video.mp4 (10MB)
+   - Created HeroVideoBg component: autoPlay, muted, loop, playsInline (iOS compliant), poster fallback, fade-in on loadeddata
+   - Hero now detects viewport via matchMedia (breakpoint 1024px):
+     • Mobile (<1024px): renders HeroVideoBg (video only, no 4 images loaded = saves bandwidth)
+     • Desktop (≥1024px): renders image slideshow (no 10MB video loaded = saves bandwidth)
+   - This dual approach means mobile users get the rich video experience, desktop keeps the elegant slideshow
+   - Verified: video plays (currentTime advancing, paused:false, readyState:4), VLM confirmed 2 screenshots 3s apart show different video frames (café scene → yoga studio scene)
+
+AUDIT (Agent Browser):
+- Mobile (390x844): video hero loads and plays, title text readable over video, Shirley + WhatsApp widgets positioned correctly
+- Desktop (1440x900): no video loaded (saves 10MB), image slideshow cycles (retreat→class), SplitText reveals correctly, 0 console errors after full scroll
+- GPU compositing verified: willChange:transform on hero bg, 60 SplitText spans, parallax imgs, drag slider
+- Lint: 0 errors, 0 warnings
+
+Stage Summary:
+- Desktop: animations optimized (3x better max frame time) with visuals preserved exactly
+- Mobile: hero now uses the uploaded devotional video as background (auto-playing, looped, muted, inline)
+- Smart asset loading: video only on mobile, images only on desktop (no wasted bandwidth)

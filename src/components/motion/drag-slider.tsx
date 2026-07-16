@@ -4,7 +4,6 @@ import {
   motion,
   useMotionValue,
   useTransform,
-  useAnimationFrame,
   type MotionValue,
 } from "framer-motion";
 import { useRef, useState, type ReactNode } from "react";
@@ -13,7 +12,6 @@ interface DragSliderProps {
   children: ReactNode[];
   className?: string;
   itemClassName?: string;
-  // gap in px between items
   gap?: number;
 }
 
@@ -25,10 +23,9 @@ export function DragSlider({
   gap = 24,
 }: DragSliderProps) {
   const x = useMotionValue(0);
-  const skew = useTransform(x, [-200, 0, 200], [-6, 0, 6]);
+  const skew = useTransform(x, [-200, 0, 200], [-5, 0, 5]);
   const [grabbing, setGrabbing] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const dragConstraintsRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -36,26 +33,25 @@ export function DragSlider({
       className={`relative w-full overflow-hidden ${className}`}
     >
       <motion.div
-        ref={dragConstraintsRef}
         drag="x"
         dragConstraints={{ left: -9999, right: 0 }}
         dragElastic={0.08}
-        style={{ x, skew }}
+        dragMomentum={false}
+        style={{ x, skew, willChange: "transform" }}
         onDragStart={() => setGrabbing(true)}
         onDragEnd={() => setGrabbing(false)}
         className={`flex cursor-grab active:cursor-grabbing ${grabbing ? "is-grabbing" : ""}`}
       >
         {children.map((child, i) => (
-          <motion.div
+          <div
             key={i}
             style={{ marginRight: gap }}
-            whileHover={{ scale: grabbing ? 1 : 1.02 }}
             className={`shrink-0 ${itemClassName} ${
               grabbing ? "[transform:rotateZ(2deg)]" : ""
             }`}
           >
             {child}
-          </motion.div>
+          </div>
         ))}
       </motion.div>
       {/* Drag hint */}

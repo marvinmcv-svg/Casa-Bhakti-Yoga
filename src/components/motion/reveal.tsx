@@ -37,8 +37,8 @@ export function Reveal({
   as = "div",
   className = "",
   delay = 0,
-  duration = 1,
-  y = 40,
+  duration = 0.8,
+  y = 36,
   x = 0,
   rotate = 0,
   rotateY = 0,
@@ -82,7 +82,7 @@ export function Reveal({
       variants={variants}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
-      style={{ perspective: 1000 }}
+      style={{ perspective: 1000, willChange: "transform, opacity" }}
     >
       {children}
     </MotionTag>

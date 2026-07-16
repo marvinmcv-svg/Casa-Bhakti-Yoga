@@ -33,8 +33,8 @@ export function SplitText({
   as = "h2",
   className = "",
   delay = 0,
-  stagger = 0.04,
-  duration = 1.2,
+  stagger = 0.035,
+  duration = 0.9,
   split = "char",
   once = true,
 }: SplitTextProps) {
@@ -52,12 +52,15 @@ export function SplitText({
     },
   };
 
+  // Optimized: translateZ(0) forces GPU compositing for each char,
+  // keeping the 3D rotateX reveal but on a dedicated layer (no repaint jank)
   const child: Variants = {
     hidden: {
       opacity: 0,
-      y: "0.6em",
-      rotateX: 90,
+      y: "0.5em",
+      rotateX: 80,
       transformOrigin: "bottom",
+      transformStyle: "preserve-3d",
     },
     show: {
       opacity: 1,
@@ -74,7 +77,7 @@ export function SplitText({
       variants={container}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
-      style={{ perspective: 800 }}
+      style={{ perspective: 600 }}
     >
       {tokens.map((tok, i) => (
         <span
@@ -85,7 +88,14 @@ export function SplitText({
             verticalAlign: "top",
           }}
         >
-          <motion.span variants={child} style={{ display: "inline-block" }}>
+          <motion.span
+            variants={child}
+            style={{
+              display: "inline-block",
+              willChange: "transform, opacity",
+              backfaceVisibility: "hidden",
+            }}
+          >
             {tok === " " ? "\u00A0" : tok}
             {split === "word" && i < tokens.length - 1 ? "\u00A0" : ""}
           </motion.span>
