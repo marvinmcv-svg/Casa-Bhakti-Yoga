@@ -849,3 +849,24 @@ Stage Summary:
 - Copy rewritten by LLM copywriter across all 54 fields (poetic, concise, Bolivian, sales-aware)
 - Fixed critical infinite-loop bug in ShirleyWidget (was causing runtime errors)
 - Triple-checked: 3 audit rounds, all features verified working
+
+---
+Task ID: 10
+Agent: main (Z.ai Code orchestrator) — GitHub push
+Task: Push project to https://github.com/marvinmcv-svg/Casa-Bhakti-Yoga.git
+
+Work Log:
+- Finished SmoothCarousel migration (updated classes.tsx + gallery.tsx to replace DragSlider)
+- Updated .gitignore to exclude research/, upload/, audit-*.png, improved-copy.json, .zscripts/
+- Removed 68 previously-tracked research/upload/zscript artifacts from git
+- Committed: "Replace drag slider with smooth carousel, clean up repo"
+- Configured remote origin with user-provided PAT (stored temporarily in .git/config only)
+- Pushed all 7 commits + 293 files (including 109 real media files) to GitHub main branch
+- Removed token from .git/config after push (replaced with clean URL)
+- Verified: no token present in any tracked or untracked file
+
+Stage Summary:
+- Repo live at: https://github.com/marvinmcv-svg/Casa-Bhakti-Yoga
+- 293 files pushed, 7 commits, main branch
+- Token used once for push, then scrubbed from config
+- USER MUST REVOKE the shared PAT at https://github.com/settings/tokens (it was exposed in chat)
