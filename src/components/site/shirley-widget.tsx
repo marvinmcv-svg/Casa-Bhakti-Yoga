@@ -172,7 +172,7 @@ export function ShirleyWidget() {
 
   return (
     <>
-      {/* Floating button */}
+      {/* Floating button — icon-only circle on mobile (matches WhatsApp size), pill on desktop */}
       <AnimatePresence>
         {!open && (
           <motion.button
@@ -181,17 +181,18 @@ export function ShirleyWidget() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 28 }}
             onClick={() => setOpen(true)}
-            className="group fixed bottom-6 right-6 z-[55] flex items-center gap-3 rounded-full bg-clay py-3 pl-3 pr-5 text-cream shadow-2xl shadow-clay/30 transition-all hover:bg-clay/90 hover:pr-6 sm:bottom-8 sm:right-8"
+            className="group fixed bottom-6 right-6 z-[55] flex h-14 w-14 items-center justify-center rounded-full bg-clay text-cream shadow-2xl shadow-clay/30 transition-all hover:bg-clay/90 hover:scale-105 sm:bottom-8 sm:right-8 lg:flex lg:h-auto lg:w-auto lg:items-center lg:gap-3 lg:py-3 lg:pl-3 lg:pr-5 lg:hover:scale-100 lg:hover:pr-6"
             aria-label={lang === "es" ? "Hablar con Shirley" : "Chat with Shirley"}
           >
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-cream/15">
-              <Flower2 size={20} className="text-cream" />
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-cream/15 lg:h-7 lg:w-7">
+              <Flower2 size={20} className="text-cream lg:!h-5 lg:!w-5" />
               <span className="absolute -right-0.5 -top-0.5 flex h-3 w-3">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sage opacity-75" />
                 <span className="relative inline-flex h-3 w-3 rounded-full bg-sage" />
               </span>
             </div>
-            <div className="text-left">
+            {/* Label: only on desktop */}
+            <div className="hidden text-left lg:block">
               <div className="text-sm font-medium leading-tight">Shirley</div>
               <div className="text-[9px] uppercase tracking-[0.15em] text-cream/70">
                 {lang === "es" ? "Recepcionista · Online" : "Receptionist · Online"}

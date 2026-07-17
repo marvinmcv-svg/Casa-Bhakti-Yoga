@@ -124,7 +124,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <span>{c("footer.address", "Santa Cruz de la Sierra, Bolivia")}</span>
             <Link
-              href="/?admin=1"
+              href="/admin"
               className="transition-colors hover:text-clay"
               aria-label={t("footer.admin")}
             >
