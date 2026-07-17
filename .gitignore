@@ -52,3 +52,10 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# Research & audit artifacts (not part of the app)
+/research/
+/upload/
+audit-*.png
+improved-copy.json
+.zscripts/
