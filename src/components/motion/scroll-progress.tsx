@@ -1,20 +1,14 @@
 "use client";
 
-import { motion, useScroll, useSpring } from "framer-motion";
+import dynamic from "next/dynamic";
 
-// Thin scroll-progress bar at the very top of the viewport.
+// Load ScrollProgress ONLY on the client — never SSR.
+// Prevents hydration mismatch from Framer Motion's useScroll/useSpring.
+const ScrollProgressClient = dynamic(
+  () => import("./scroll-progress-client").then((m) => m.ScrollProgressClient),
+  { ssr: false, loading: () => null }
+);
+
 export function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
-  return (
-    <motion.div
-      className="fixed left-0 right-0 top-0 z-[95] h-[2px] origin-left bg-gradient-to-r from-clay via-gold to-sage"
-      style={{ scaleX }}
-    />
-  );
+  return <ScrollProgressClient />;
 }
