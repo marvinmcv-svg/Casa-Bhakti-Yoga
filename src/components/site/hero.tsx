@@ -6,7 +6,6 @@ import { useContent } from "@/hooks/use-content";
 import { ClayButton } from "@/components/motion/clay-button";
 import { SplitText } from "@/components/motion/split-text";
 import { useLanguage } from "@/lib/i18n";
-import { HeroVideoBg } from "@/components/site/hero-video-bg";
 
 const HERO_IMAGES = [
   "/media/hero-yoga-retreat.jpg",
@@ -15,7 +14,6 @@ const HERO_IMAGES = [
   "/media/hero-kirtan.jpg",
 ];
 
-const HERO_VIDEO = "/media/hero-bhakti-video.mp4";
 const MOBILE_BREAKPOINT = 1024; // lg
 
 export function Hero() {
@@ -59,28 +57,24 @@ export function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] items-end overflow-hidden bg-espresso"
     >
-      {/* Background: video on mobile, image slideshow on desktop */}
-      {isMobile ? (
-        <HeroVideoBg src={HERO_VIDEO} poster={HERO_IMAGES[0]} />
-      ) : (
-        <motion.div
-          style={{ y: yBg, scale: scaleBg, willChange: "transform" }}
-          className="absolute inset-0 z-0"
-        >
-          {HERO_IMAGES.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt=""
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-out-quart ${
-                i === idx ? "opacity-100" : "opacity-0"
-              }`}
-              loading={i === 0 ? "eager" : "lazy"}
-              decoding="async"
-            />
-          ))}
-        </motion.div>
-      )}
+      {/* Background: image slideshow on all viewports (video removed for deployment) */}
+      <motion.div
+        style={{ y: yBg, scale: scaleBg, willChange: "transform" }}
+        className="absolute inset-0 z-0"
+      >
+        {HERO_IMAGES.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-out-quart ${
+              i === idx ? "opacity-100" : "opacity-0"
+            }`}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+          />
+        ))}
+      </motion.div>
 
       {/* Gradient overlays — responsive:
           Mobile: video is the star, so only a subtle bottom gradient for text legibility.

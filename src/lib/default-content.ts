@@ -354,7 +354,7 @@ const VIDEOS = [
     titleEs: "Casa Bhakti — Una forma de vida",
     descriptionEn: "Truth, wisdom, compassion, love, equanimity and peace. And the fact of living a life accordingly.",
     descriptionEs: "Verdad, sabiduría, compasión, amor, ecuanimidad y paz. Y el hecho de vivir una vida en consecuencia.",
-    videoUrl: "/media/hero-bhakti-video.mp4",
+    videoUrl: "/media/hero-yoga-retreat.jpg", // Using image as video placeholder
     posterUrl: "/media/hero-yoga-retreat.jpg",
     sourceEn: "Casa Bhakti",
     sourceEs: "Casa Bhakti",
