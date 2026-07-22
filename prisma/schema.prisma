@@ -85,6 +85,33 @@ model GalleryItem {
   order     Int      @default(0)
 }
 
+model Testimonial {
+  id           String   @id @default(cuid())
+  quoteEn      String
+  quoteEs      String
+  authorName   String
+  authorRoleEn String   @default("")
+  authorRoleEs String   @default("")
+  authorImage  String   @default("")
+  rating       Int      @default(5)
+  featured     Boolean  @default(false)
+  order        Int      @default(0)
+}
+
+model Video {
+  id            String   @id @default(cuid())
+  titleEn       String
+  titleEs       String
+  descriptionEn String   @default("")
+  descriptionEs String   @default("")
+  videoUrl      String
+  posterUrl     String   @default("")
+  sourceEn      String   @default("")
+  sourceEs      String   @default("")
+  featured      Boolean  @default(false)
+  order         Int      @default(0)
+}
+
 model AdminUser {
   id           String   @id @default(cuid())
   username     String   @unique

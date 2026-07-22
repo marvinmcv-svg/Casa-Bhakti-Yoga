@@ -11,6 +11,8 @@ import { Schedule } from "@/components/site/schedule";
 import { Teachers } from "@/components/site/teachers";
 import { Events } from "@/components/site/events";
 import { Gallery } from "@/components/site/gallery";
+import { Testimonials } from "@/components/site/testimonials";
+import { Videos } from "@/components/site/videos";
 import { Contact } from "@/components/site/contact";
 import { Footer } from "@/components/site/footer";
 import { ShirleyWidget } from "@/components/site/shirley-widget";
@@ -45,7 +47,9 @@ export function SiteShell() {
           <Classes />
           <Schedule />
           <Teachers />
+          <Testimonials />
           <Events />
+          <Videos />
           <Gallery />
           <Contact />
         </main>

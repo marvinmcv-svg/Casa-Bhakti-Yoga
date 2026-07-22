@@ -13,7 +13,9 @@ const NAV = [
   { key: "nav.classes", href: "#classes" },
   { key: "nav.schedule", href: "#schedule" },
   { key: "nav.teachers", href: "#teachers" },
+  { key: "nav.testimonials", href: "#testimonials" },
   { key: "nav.events", href: "#events" },
+  { key: "nav.videos", href: "#videos" },
   { key: "nav.gallery", href: "#gallery" },
   { key: "nav.contact", href: "#contact" },
 ];
@@ -45,11 +47,18 @@ export function Header() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
           <Link
             href="#top"
-            className={`font-serif text-xl tracking-wide transition-colors sm:text-2xl ${
+            className={`group flex items-center gap-2.5 transition-colors ${
               scrolled ? "text-espresso" : "text-cream"
             }`}
           >
-            Casa Bhakti
+            <img
+              src="/media/casa-bhakti-logo.jpg"
+              alt="Casa Bhakti"
+              className="h-9 w-9 rounded-full object-cover ring-1 ring-current/20 transition-transform duration-500 group-hover:scale-105 sm:h-10 sm:w-10"
+            />
+            <span className="font-serif text-xl tracking-wide sm:text-2xl">
+              Casa Bhakti
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-7 lg:flex">
@@ -103,7 +112,14 @@ export function Header() {
             className="fixed inset-0 z-[60] flex flex-col bg-espresso p-6 text-cream"
           >
             <div className="flex items-center justify-between">
-              <span className="font-serif text-2xl">Casa Bhakti</span>
+              <span className="flex items-center gap-2.5">
+                <img
+                  src="/media/casa-bhakti-logo.jpg"
+                  alt="Casa Bhakti"
+                  className="h-9 w-9 rounded-full object-cover"
+                />
+                <span className="font-serif text-2xl">Casa Bhakti</span>
+              </span>
               <button onClick={() => setOpen(false)} aria-label="Close menu">
                 <X size={26} />
               </button>

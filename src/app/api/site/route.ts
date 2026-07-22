@@ -11,7 +11,7 @@ export async function GET() {
     await ensureDefaultAdmin();
     await seedDatabase();
 
-    const [content, classes, schedule, events, teachers, gallery] =
+    const [content, classes, schedule, events, teachers, gallery, testimonials, videos] =
       await Promise.all([
         db.siteContent.findMany(),
         db.classType.findMany({ include: { schedules: true }, orderBy: { order: "asc" } }),
@@ -19,6 +19,8 @@ export async function GET() {
         db.event.findMany({ orderBy: { date: "asc" } }),
         db.teacher.findMany({ orderBy: { order: "asc" } }),
         db.galleryItem.findMany({ orderBy: { order: "asc" } }),
+        db.testimonial.findMany({ orderBy: { order: "asc" } }),
+        db.video.findMany({ orderBy: { order: "asc" } }),
       ]);
 
     const contentMap: Record<string, { en: string; es: string }> = {};
@@ -33,6 +35,8 @@ export async function GET() {
       events,
       teachers,
       gallery,
+      testimonials,
+      videos,
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Unknown error";

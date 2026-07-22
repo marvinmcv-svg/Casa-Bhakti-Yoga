@@ -13,14 +13,16 @@ import { ScheduleManager } from "@/components/admin/schedule-manager";
 import { EventsManager } from "@/components/admin/events-manager";
 import { TeachersManager } from "@/components/admin/teachers-manager";
 import { GalleryManager } from "@/components/admin/gallery-manager";
+import { TestimonialsManager } from "@/components/admin/testimonials-manager";
+import { VideosManager } from "@/components/admin/videos-manager";
 import { toast } from "sonner";
 import {
   LayoutDashboard, FileText, Calendar, Clock, Sparkles, Users, Images,
-  LogOut, ExternalLink, Menu, X, Flower2,
+  LogOut, ExternalLink, Menu, X, Flower2, Quote, Video,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-type View = "dashboard" | "content" | "classes" | "schedule" | "events" | "teachers" | "gallery";
+type View = "dashboard" | "content" | "classes" | "schedule" | "events" | "teachers" | "gallery" | "testimonials" | "videos";
 
 export function AdminDashboard({ username }: { username: string }) {
   const { t, lang } = useLanguage();
@@ -42,6 +44,8 @@ export function AdminDashboard({ username }: { username: string }) {
     { id: "events", label: t("admin.nav.events"), icon: <Sparkles size={17} /> },
     { id: "teachers", label: t("admin.nav.teachers"), icon: <Users size={17} /> },
     { id: "gallery", label: t("admin.nav.gallery"), icon: <Images size={17} /> },
+    { id: "testimonials", label: t("admin.nav.testimonials"), icon: <Quote size={17} /> },
+    { id: "videos", label: t("admin.nav.videos"), icon: <Video size={17} /> },
   ];
 
   const stats = [
@@ -50,6 +54,8 @@ export function AdminDashboard({ username }: { username: string }) {
     { label: t("admin.nav.events"), value: data?.events.length ?? 0, icon: <Sparkles size={18} /> },
     { label: t("admin.nav.teachers"), value: data?.teachers.length ?? 0, icon: <Users size={18} /> },
     { label: t("admin.nav.gallery"), value: data?.gallery.length ?? 0, icon: <Images size={18} /> },
+    { label: t("admin.nav.testimonials"), value: data?.testimonials.length ?? 0, icon: <Quote size={18} /> },
+    { label: t("admin.nav.videos"), value: data?.videos.length ?? 0, icon: <Video size={18} /> },
     { label: lang === "en" ? "Content fields" : "Campos de contenido", value: Object.keys(data?.content ?? {}).length, icon: <FileText size={18} /> },
   ];
 
@@ -198,6 +204,8 @@ export function AdminDashboard({ username }: { username: string }) {
               {view === "events" && <EventsManager />}
               {view === "teachers" && <TeachersManager />}
               {view === "gallery" && <GalleryManager />}
+              {view === "testimonials" && <TestimonialsManager />}
+              {view === "videos" && <VideosManager />}
             </motion.div>
           </AnimatePresence>
         </main>

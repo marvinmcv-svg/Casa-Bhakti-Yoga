@@ -73,6 +73,33 @@ export interface GalleryItem {
   order: number;
 }
 
+export interface Testimonial {
+  id: string;
+  quoteEn: string;
+  quoteEs: string;
+  authorName: string;
+  authorRoleEn: string;
+  authorRoleEs: string;
+  authorImage: string;
+  rating: number;
+  featured: boolean;
+  order: number;
+}
+
+export interface Video {
+  id: string;
+  titleEn: string;
+  titleEs: string;
+  descriptionEn: string;
+  descriptionEs: string;
+  videoUrl: string;
+  posterUrl: string;
+  sourceEn: string;
+  sourceEs: string;
+  featured: boolean;
+  order: number;
+}
+
 export interface SiteData {
   content: SiteContentMap;
   classes: ClassType[];
@@ -80,6 +107,8 @@ export interface SiteData {
   events: EventItem[];
   teachers: Teacher[];
   gallery: GalleryItem[];
+  testimonials: Testimonial[];
+  videos: Video[];
 }
 
 export function useSiteData() {

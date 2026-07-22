@@ -2,10 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Flower2 } from "lucide-react";
 
 // Premium preloader: orchestrates a refined entrance.
-// Shows a lotus mark with a draw-in ring, then curtain-lifts away.
+// Shows the real Casa Bhakti logo with a draw-in ring, then curtain-lifts away.
 export function Preloader() {
   const [done, setDone] = useState(false);
 
@@ -30,7 +29,7 @@ export function Preloader() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
         >
-          {/* Curtain lift (two panels) */}
+          {/* Curtain lift */}
           <motion.div
             className="absolute inset-0 bg-espresso"
             exit={{ y: "-100%" }}
@@ -43,18 +42,18 @@ export function Preloader() {
               initial={{ scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-              className="relative flex h-20 w-20 items-center justify-center"
+              className="relative flex h-24 w-24 items-center justify-center"
             >
-              {/* Drawing ring */}
+              {/* Drawing ring around the logo */}
               <svg
                 className="absolute inset-0"
-                viewBox="0 0 80 80"
+                viewBox="0 0 96 96"
                 fill="none"
               >
                 <motion.circle
-                  cx="40"
-                  cy="40"
-                  r="38"
+                  cx="48"
+                  cy="48"
+                  r="46"
                   stroke="var(--clay)"
                   strokeWidth="1"
                   strokeLinecap="round"
@@ -64,20 +63,15 @@ export function Preloader() {
                   style={{ rotate: -90, transformOrigin: "center" }}
                 />
               </svg>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              >
-                <Flower2
-                  size={28}
-                  className="text-clay"
-                  strokeWidth={1}
-                />
-              </motion.div>
+              {/* Real Casa Bhakti logo */}
+              <motion.img
+                src="/media/casa-bhakti-logo.jpg"
+                alt="Casa Bhakti"
+                className="h-16 w-16 rounded-full object-cover ring-1 ring-clay/30"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+              />
             </motion.div>
 
             <motion.div

@@ -103,7 +103,7 @@ export function SmoothCarousel({
           </div>
         ))}
         {/* Trailing spacer so last item can snap-start */}
-        <div style={{ shrink: 0, width: 1 }} aria-hidden />
+        <div style={{ flexShrink: 0, width: 1 }} aria-hidden />
       </div>
 
       {/* Arrow nav — desktop only */}

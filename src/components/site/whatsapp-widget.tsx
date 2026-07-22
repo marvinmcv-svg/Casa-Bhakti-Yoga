@@ -9,13 +9,17 @@ const WHATSAPP_URL = "https://wa.me/59167394998";
 export function WhatsAppWidget() {
   const { lang } = useLanguage();
   const [showTooltip, setShowTooltip] = useState(false);
-  const [dismissed, setDismissed] = useState(() => {
+  const [dismissed, setDismissed] = useState(false);
+
+  // Read localStorage ONLY in useEffect to avoid hydration mismatch
+  useEffect(() => {
     try {
-      return localStorage.getItem("cb-wa-tooltip-dismissed") === "1";
-    } catch {
-      return false;
-    }
-  });
+      if (localStorage.getItem("cb-wa-tooltip-dismissed") === "1") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setDismissed(true);
+      }
+    } catch {}
+  }, []);
 
   // Show tooltip after 4 seconds (if not dismissed)
   useEffect(() => {

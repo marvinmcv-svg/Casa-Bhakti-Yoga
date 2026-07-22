@@ -44,7 +44,6 @@ export function HeroVideoBg({ src, poster }: HeroVideoBgProps) {
         onLoadedData={() => setLoaded(true)}
         // Disable picture-in-picture and download prompts for a clean look
         controlsList="nodownload nofullscreen noremoteplayback"
-        // @ts-expect-error — disablePictureInPicture is a valid video attr
         disablePictureInPicture
       >
         <source src={src} type="video/mp4" />

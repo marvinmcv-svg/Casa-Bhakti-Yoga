@@ -38,7 +38,14 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-5">
-            <h2 className="font-serif text-4xl">Casa Bhakti</h2>
+            <div className="flex items-center gap-3">
+              <img
+                src="/media/casa-bhakti-logo.jpg"
+                alt="Casa Bhakti"
+                className="h-12 w-12 rounded-full object-cover ring-1 ring-cream/20"
+              />
+              <h2 className="font-serif text-4xl">Casa Bhakti</h2>
+            </div>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-cream/80">
               {c("footer.tagline", "Templo de Yoga & Vedanta · Santa Cruz, Bolivia")}
             </p>

@@ -100,6 +100,18 @@ export const SITE_CONTENT: Record<string, { en: string; es: string }> = {
   },
   "teachers.eyebrow": { en: "005 — Teachers", es: "005 — Maestros" },
   "teachers.title": { en: "Guides on the path", es: "Guías en el camino" },
+  "testimonials.eyebrow": { en: "006 — Voices", es: "006 — Voces" },
+  "testimonials.title": { en: "Words from our community", es: "Palabras de nuestra comunidad" },
+  "testimonials.body": {
+    en: "The practice leaves a mark. These are the voices of those who walked through our doors.",
+    es: "La práctica deja una huella. Estas son las voces de quienes pasaron por nuestras puertas.",
+  },
+  "videos.eyebrow": { en: "009 — Watch", es: "009 — Mira" },
+  "videos.title": { en: "Moving images", es: "Imágenes en movimiento" },
+  "videos.body": {
+    en: "Moments of practice, kirtan and stillness — captured on video.",
+    es: "Momentos de práctica, kirtan y quietud — capturados en video.",
+  },
 };
 
 const CLASS_TYPES = [
@@ -297,8 +309,63 @@ const GALLERY = [
   { imageUrl: "/media/gallery-12.jpg", captionEn: "Presence", captionEs: "Presencia", type: "image" },
 ];
 
+const TESTIMONIALS = [
+  {
+    quoteEn: "Sometimes we believe yoga is only postures on a mat, but in reality it is a way of seeing life. At Casa Bhakti we explore these teachings every day.",
+    quoteEs: "A veces creemos que el yoga es solo posturas en un mat, pero en realidad es una forma de ver la vida. En Casa Bhakti exploramos estas enseñanzas todos los días.",
+    authorName: "Kalyani Dasi",
+    authorRoleEn: "Founder",
+    authorRoleEs: "Fundadora",
+    authorImage: "/media/teacher-01.jpg",
+    rating: 5, featured: true, order: 0,
+  },
+  {
+    quoteEn: "Becoming a yoga teacher is not learning to teach… it is remembering how to live in presence.",
+    quoteEs: "Convertirse en profesor de yoga no es aprender a enseñar… es recordar cómo vivir en presencia.",
+    authorName: "Pablo Narayana",
+    authorRoleEn: "Teacher & Co-Guide",
+    authorRoleEs: "Maestro y Co-Guía",
+    authorImage: "/media/teacher-02.jpg",
+    rating: 5, featured: true, order: 1,
+  },
+  {
+    quoteEn: "The paradox is that we are, at the same time, human and divine.",
+    quoteEs: "La paradoja es que somos al mismo tiempo, humanos y divinos.",
+    authorName: "Baba Ram Dass",
+    authorRoleEn: "Inspiration",
+    authorRoleEs: "Inspiración",
+    authorImage: "",
+    rating: 5, featured: false, order: 2,
+  },
+  {
+    quoteEn: "Health is wealth. Peace of mind is happiness. Yoga shows the way.",
+    quoteEs: "La salud es riqueza. La paz mental es felicidad. Yoga muestra el camino.",
+    authorName: "Swami Sivananda",
+    authorRoleEn: "Lineage",
+    authorRoleEs: "Linaje",
+    authorImage: "",
+    rating: 5, featured: false, order: 3,
+  },
+];
+
+const VIDEOS = [
+  {
+    titleEn: "Casa Bhakti — A way of life",
+    titleEs: "Casa Bhakti — Una forma de vida",
+    descriptionEn: "Truth, wisdom, compassion, love, equanimity and peace. And the fact of living a life accordingly.",
+    descriptionEs: "Verdad, sabiduría, compasión, amor, ecuanimidad y paz. Y el hecho de vivir una vida en consecuencia.",
+    videoUrl: "/media/hero-bhakti-video.mp4",
+    posterUrl: "/media/hero-yoga-retreat.jpg",
+    sourceEn: "Casa Bhakti",
+    sourceEs: "Casa Bhakti",
+    featured: true, order: 0,
+  },
+];
+
 export async function seedDatabase(force = false) {
   if (force) {
+    await db.video.deleteMany();
+    await db.testimonial.deleteMany();
     await db.galleryItem.deleteMany();
     await db.event.deleteMany();
     await db.classSchedule.deleteMany();
@@ -307,80 +374,72 @@ export async function seedDatabase(force = false) {
     await db.siteContent.deleteMany();
   }
 
-  const hasContent = await db.siteContent.count();
-  if (hasContent > 0 && !force) return { seeded: false, reason: "already has content" };
-
-  // Site content
+  // Site content — always upsert, but use empty update so we NEVER overwrite admin edits.
   for (const [key, val] of Object.entries(SITE_CONTENT)) {
     await db.siteContent.upsert({
       where: { key },
       create: { key, valueEn: val.en, valueEs: val.es },
-      update: { valueEn: val.en, valueEs: val.es },
+      update: force ? { valueEn: val.en, valueEs: val.es } : {},
     });
   }
 
-  // Class types
-  const classIds: string[] = [];
-  for (const c of CLASS_TYPES) {
-    const created = await db.classType.create({ data: c });
-    classIds.push(created.id);
+  // Classes — only seed if table is empty
+  if ((await db.classType.count()) === 0) {
+    const classIds: string[] = [];
+    for (const c of CLASS_TYPES) {
+      const created = await db.classType.create({ data: c });
+      classIds.push(created.id);
+    }
+    for (let i = 0; i < SCHEDULE.length; i++) {
+      const s = SCHEDULE[i];
+      await db.classSchedule.create({
+        data: {
+          dayOfWeek: s.day, startTime: s.start, endTime: s.end,
+          classTypeId: classIds[s.classIdx],
+          instructorEn: s.instructorEn, instructorEs: s.instructorEs,
+          online: s.online, order: i,
+        },
+      });
+    }
   }
 
-  // Schedule
-  for (let i = 0; i < SCHEDULE.length; i++) {
-    const s = SCHEDULE[i];
-    await db.classSchedule.create({
-      data: {
-        dayOfWeek: s.day,
-        startTime: s.start,
-        endTime: s.end,
-        classTypeId: classIds[s.classIdx],
-        instructorEn: s.instructorEn,
-        instructorEs: s.instructorEs,
-        online: s.online,
-        order: i,
-      },
-    });
+  if ((await db.teacher.count()) === 0) {
+    for (const t of TEACHERS) await db.teacher.create({ data: t });
   }
 
-  // Teachers
-  for (const t of TEACHERS) {
-    await db.teacher.create({ data: t });
+  if ((await db.event.count()) === 0) {
+    for (const e of EVENTS) {
+      const date = new Date();
+      date.setDate(date.getDate() + e.dateOffsetDays);
+      date.setHours(9, 0, 0, 0);
+      await db.event.create({
+        data: {
+          titleEn: e.titleEn, titleEs: e.titleEs,
+          descriptionEn: e.descriptionEn, descriptionEs: e.descriptionEs,
+          date, endTime: e.endTime,
+          locationEn: e.locationEn, locationEs: e.locationEs,
+          imageUrl: e.imageUrl, priceEn: e.priceEn, priceEs: e.priceEs,
+          featured: e.featured, order: e.order,
+        },
+      });
+    }
   }
 
-  // Events
-  for (const e of EVENTS) {
-    const date = new Date();
-    date.setDate(date.getDate() + e.dateOffsetDays);
-    date.setHours(9, 0, 0, 0);
-    await db.event.create({
-      data: {
-        titleEn: e.titleEn,
-        titleEs: e.titleEs,
-        descriptionEn: e.descriptionEn,
-        descriptionEs: e.descriptionEs,
-        date,
-        endTime: e.endTime,
-        locationEn: e.locationEn,
-        locationEs: e.locationEs,
-        imageUrl: e.imageUrl,
-        priceEn: e.priceEn,
-        priceEs: e.priceEs,
-        featured: e.featured,
-        order: e.order,
-      },
-    });
+  if ((await db.galleryItem.count()) === 0) {
+    for (let i = 0; i < GALLERY.length; i++) {
+      await db.galleryItem.create({ data: { ...GALLERY[i], order: i } });
+    }
   }
 
-  // Gallery
-  for (let i = 0; i < GALLERY.length; i++) {
-    const g = GALLERY[i];
-    await db.galleryItem.create({
-      data: { ...g, order: i },
-    });
+  if ((await db.testimonial.count()) === 0) {
+    for (const t of TESTIMONIALS) await db.testimonial.create({ data: t });
   }
 
-  return { seeded: true, counts: { content: Object.keys(SITE_CONTENT).length, classes: CLASS_TYPES.length, schedule: SCHEDULE.length, teachers: TEACHERS.length, events: EVENTS.length, gallery: GALLERY.length } };
+  if ((await db.video.count()) === 0) {
+    for (const v of VIDEOS) await db.video.create({ data: v });
+  }
+
+  return { seeded: true, forced: force };
 }
 
 export const GALLERY_IMAGES = [

@@ -58,4 +58,4 @@ server.log
 /upload/
 audit-*.png
 improved-copy.json
-.zscripts/
+.zscripts/examples/
