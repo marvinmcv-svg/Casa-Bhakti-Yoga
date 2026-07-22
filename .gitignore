@@ -59,3 +59,4 @@ server.log
 audit-*.png
 improved-copy.json
 .zscripts/examples/
+worklog.md
