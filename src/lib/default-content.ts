@@ -102,16 +102,10 @@ export const SITE_CONTENT: Record<string, { en: string; es: string }> = {
   "teachers.title": { en: "Guides on the path", es: "Guías en el camino" },
   "testimonials.eyebrow": { en: "006 — Voices", es: "006 — Voces" },
   "testimonials.title": { en: "Words from our community", es: "Palabras de nuestra comunidad" },
-  "testimonials.body": {
-    en: "The practice leaves a mark. These are the voices of those who walked through our doors.",
-    es: "La práctica deja una huella. Estas son las voces de quienes pasaron por nuestras puertas.",
-  },
+  "testimonials.body": { en: "The practice leaves a mark. These are the voices of those who walked through our doors.", es: "La práctica deja una huella. Estas son las voces de quienes pasaron por nuestras puertas." },
   "videos.eyebrow": { en: "009 — Watch", es: "009 — Mira" },
   "videos.title": { en: "Moving images", es: "Imágenes en movimiento" },
-  "videos.body": {
-    en: "Moments of practice, kirtan and stillness — captured on video.",
-    es: "Momentos de práctica, kirtan y quietud — capturados en video.",
-  },
+  "videos.body": { en: "Moments of practice, kirtan and stillness — captured on video.", es: "Momentos de práctica, kirtan y quietud — capturados en video." },
 };
 
 const CLASS_TYPES = [
@@ -334,8 +328,7 @@ const TESTIMONIALS = [
     authorName: "Baba Ram Dass",
     authorRoleEn: "Inspiration",
     authorRoleEs: "Inspiración",
-    authorImage: "",
-    rating: 5, featured: false, order: 2,
+    authorImage: "", rating: 5, featured: false, order: 2,
   },
   {
     quoteEn: "Health is wealth. Peace of mind is happiness. Yoga shows the way.",
@@ -343,8 +336,7 @@ const TESTIMONIALS = [
     authorName: "Swami Sivananda",
     authorRoleEn: "Lineage",
     authorRoleEs: "Linaje",
-    authorImage: "",
-    rating: 5, featured: false, order: 3,
+    authorImage: "", rating: 5, featured: false, order: 3,
   },
 ];
 
@@ -352,9 +344,9 @@ const VIDEOS = [
   {
     titleEn: "Casa Bhakti — A way of life",
     titleEs: "Casa Bhakti — Una forma de vida",
-    descriptionEn: "Truth, wisdom, compassion, love, equanimity and peace. And the fact of living a life accordingly.",
-    descriptionEs: "Verdad, sabiduría, compasión, amor, ecuanimidad y paz. Y el hecho de vivir una vida en consecuencia.",
-    videoUrl: "/media/hero-yoga-retreat.jpg", // Using image as video placeholder
+    descriptionEn: "Truth, wisdom, compassion, love, equanimity and peace.",
+    descriptionEs: "Verdad, sabiduría, compasión, amor, ecuanimidad y paz.",
+    videoUrl: "/media/hero-bhakti-video.mp4",
     posterUrl: "/media/hero-yoga-retreat.jpg",
     sourceEn: "Casa Bhakti",
     sourceEs: "Casa Bhakti",
@@ -374,7 +366,7 @@ export async function seedDatabase(force = false) {
     await db.siteContent.deleteMany();
   }
 
-  // Site content — always upsert, but use empty update so we NEVER overwrite admin edits.
+  // Site content — always upsert, empty update so we NEVER overwrite admin edits
   for (const [key, val] of Object.entries(SITE_CONTENT)) {
     await db.siteContent.upsert({
       where: { key },
@@ -383,61 +375,28 @@ export async function seedDatabase(force = false) {
     });
   }
 
-  // Classes — only seed if table is empty
+  // Classes — only seed if empty
   if ((await db.classType.count()) === 0) {
     const classIds: string[] = [];
-    for (const c of CLASS_TYPES) {
-      const created = await db.classType.create({ data: c });
-      classIds.push(created.id);
-    }
+    for (const c of CLASS_TYPES) { const created = await db.classType.create({ data: c }); classIds.push(created.id); }
     for (let i = 0; i < SCHEDULE.length; i++) {
       const s = SCHEDULE[i];
-      await db.classSchedule.create({
-        data: {
-          dayOfWeek: s.day, startTime: s.start, endTime: s.end,
-          classTypeId: classIds[s.classIdx],
-          instructorEn: s.instructorEn, instructorEs: s.instructorEs,
-          online: s.online, order: i,
-        },
-      });
+      await db.classSchedule.create({ data: { dayOfWeek: s.day, startTime: s.start, endTime: s.end, classTypeId: classIds[s.classIdx], instructorEn: s.instructorEn, instructorEs: s.instructorEs, online: s.online, order: i } });
     }
   }
 
-  if ((await db.teacher.count()) === 0) {
-    for (const t of TEACHERS) await db.teacher.create({ data: t });
-  }
+  if ((await db.teacher.count()) === 0) { for (const t of TEACHERS) await db.teacher.create({ data: t }); }
 
   if ((await db.event.count()) === 0) {
     for (const e of EVENTS) {
-      const date = new Date();
-      date.setDate(date.getDate() + e.dateOffsetDays);
-      date.setHours(9, 0, 0, 0);
-      await db.event.create({
-        data: {
-          titleEn: e.titleEn, titleEs: e.titleEs,
-          descriptionEn: e.descriptionEn, descriptionEs: e.descriptionEs,
-          date, endTime: e.endTime,
-          locationEn: e.locationEn, locationEs: e.locationEs,
-          imageUrl: e.imageUrl, priceEn: e.priceEn, priceEs: e.priceEs,
-          featured: e.featured, order: e.order,
-        },
-      });
+      const date = new Date(); date.setDate(date.getDate() + e.dateOffsetDays); date.setHours(9, 0, 0, 0);
+      await db.event.create({ data: { titleEn: e.titleEn, titleEs: e.titleEs, descriptionEn: e.descriptionEn, descriptionEs: e.descriptionEs, date, endTime: e.endTime, locationEn: e.locationEn, locationEs: e.locationEs, imageUrl: e.imageUrl, priceEn: e.priceEn, priceEs: e.priceEs, featured: e.featured, order: e.order } });
     }
   }
 
-  if ((await db.galleryItem.count()) === 0) {
-    for (let i = 0; i < GALLERY.length; i++) {
-      await db.galleryItem.create({ data: { ...GALLERY[i], order: i } });
-    }
-  }
-
-  if ((await db.testimonial.count()) === 0) {
-    for (const t of TESTIMONIALS) await db.testimonial.create({ data: t });
-  }
-
-  if ((await db.video.count()) === 0) {
-    for (const v of VIDEOS) await db.video.create({ data: v });
-  }
+  if ((await db.galleryItem.count()) === 0) { for (let i = 0; i < GALLERY.length; i++) await db.galleryItem.create({ data: { ...GALLERY[i], order: i } }); }
+  if ((await db.testimonial.count()) === 0) { for (const t of TESTIMONIALS) await db.testimonial.create({ data: t }); }
+  if ((await db.video.count()) === 0) { for (const v of VIDEOS) await db.video.create({ data: v }); }
 
   return { seeded: true, forced: force };
 }

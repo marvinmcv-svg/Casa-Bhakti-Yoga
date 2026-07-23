@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/i18n";
 import { ChapterIcon } from "@/components/motion/chapter-icon";
 import { SplitText } from "@/components/motion/split-text";
 import { Reveal } from "@/components/motion/reveal";
-import { ClipReveal } from "@/components/motion/clip-reveal";
+import { ParallaxImage } from "@/components/motion/parallax-image";
 import Link from "next/link";
 
 export function Intro() {
@@ -50,7 +50,7 @@ export function Intro() {
               ].map((s, i) => (
                 <Reveal key={i} delay={0.2 + i * 0.1} y={20}>
                   <div>
-                    <div className="font-serif text-3xl text-gradient-gold sm:text-4xl">{s.v}</div>
+                    <div className="font-serif text-3xl text-clay sm:text-4xl">{s.v}</div>
                     <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                       {s.l}
                     </div>
@@ -61,18 +61,19 @@ export function Intro() {
           </div>
 
           <div className="lg:col-span-5">
-            <ClipReveal
-              src="/media/about-yoga-practice.jpg"
-              alt="Yoga practice at Casa Bhakti"
-              className="aspect-[3/4] rounded-sm"
-              direction="right"
-              delay={0.2}
-              priority
-            />
-            <Reveal delay={0.6}>
-              <div className="mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                <span>Casa Bhakti</span>
-                <span>Santa Cruz, BO</span>
+            <Reveal rotateY={-12} duration={1.4} className="perspective-1000">
+              <div className="preserve-3d">
+                <ParallaxImage
+                  src="/media/about-yoga-practice.jpg"
+                  alt="Yoga practice at Casa Bhakti"
+                  className="aspect-[3/4] rounded-sm"
+                  speed={0.1}
+                  priority
+                />
+                <div className="mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                  <span>Casa Bhakti</span>
+                  <span>Santa Cruz, BO</span>
+                </div>
               </div>
             </Reveal>
           </div>

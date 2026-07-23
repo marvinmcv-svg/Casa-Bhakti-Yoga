@@ -34,14 +34,14 @@ export function Philosophy() {
           </div>
         </div>
 
-        <div className="mt-20 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-20 grid gap-px overflow-hidden rounded-sm border border-cream/10 bg-cream/10 sm:grid-cols-2 lg:grid-cols-4">
           {paths.map((p, i) => (
             <Reveal
               key={i}
               delay={i * 0.12}
               y={50}
               rotateY={-8}
-              className="group relative rounded-lg border border-cream/10 bg-cream/[0.03] p-8 backdrop-blur-sm transition-all duration-500 hover:border-clay/30 hover:bg-cream/[0.06] lg:p-10"
+              className="group relative bg-espresso p-8 transition-colors duration-500 hover:bg-espresso/60 lg:p-10"
             >
               <div className="mb-8 flex items-center justify-between">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-clay">{p.num}</span>

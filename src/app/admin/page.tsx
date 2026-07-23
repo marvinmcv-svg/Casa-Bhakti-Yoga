@@ -1,10 +1,6 @@
-import type { Metadata } from "next";
-import { AdminApp } from "@/components/admin/admin-app";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Admin · Casa Bhakti",
-  robots: { index: false, follow: false },
-};
+import { AdminApp } from "@/components/admin/admin-app";
 
 export default function AdminPage() {
   return <AdminApp />;

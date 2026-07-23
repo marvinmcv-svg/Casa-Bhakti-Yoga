@@ -4,7 +4,7 @@ import { useContent } from "@/hooks/use-content";
 import { useLanguage } from "@/lib/i18n";
 import { ChapterIcon } from "@/components/motion/chapter-icon";
 import { SplitText } from "@/components/motion/split-text";
-import { SmoothCarousel } from "@/components/motion/smooth-carousel";
+import { DragSlider } from "@/components/motion/drag-slider";
 import { MarqueeText } from "@/components/motion/marquee-text";
 import { Reveal } from "@/components/motion/reveal";
 import type { GalleryItem } from "@/hooks/use-site-data";
@@ -54,7 +54,7 @@ export function Gallery() {
 
       <div className="mt-16">
         {items.length > 0 && (
-          <SmoothCarousel className="pl-5 sm:pl-8" itemClassName="w-[78vw] sm:w-[50vw] lg:w-[32vw] xl:w-[26vw]">
+          <DragSlider className="pl-5 sm:pl-8" itemClassName="w-[78vw] sm:w-[50vw] lg:w-[32vw] xl:w-[26vw]">
             {items.map((item, i) => (
               <button
                 key={item.id}
@@ -78,7 +78,7 @@ export function Gallery() {
                 </div>
               </button>
             ))}
-          </SmoothCarousel>
+          </DragSlider>
         )}
       </div>
 

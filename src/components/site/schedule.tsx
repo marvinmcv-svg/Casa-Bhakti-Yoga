@@ -77,7 +77,7 @@ export function Schedule() {
         </div>
 
         {/* Schedule list */}
-        <div className="mt-8 min-h-[320px]">
+        <div className="mt-8 min-h-[320px] border-t border-border">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeDay}
@@ -85,7 +85,6 @@ export function Schedule() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
-              className="space-y-3"
             >
               {daySchedule.length === 0 ? (
                 <div className="py-20 text-center text-sm uppercase tracking-[0.2em] text-muted-foreground">
@@ -101,21 +100,17 @@ export function Schedule() {
                       key={s.id}
                       delay={i * 0.05}
                       y={20}
-                      className="group flex items-center gap-5 rounded-lg border border-border/60 bg-card p-4 transition-all duration-300 hover:border-clay/40 hover:shadow-md sm:p-5"
+                      className="group grid grid-cols-12 items-center gap-4 border-b border-border py-5 transition-colors hover:bg-cream/60"
                     >
-                      {/* Time block */}
-                      <div className="w-16 shrink-0 text-right">
+                      <div className="col-span-3 sm:col-span-2">
                         <div className="font-serif text-lg text-clay sm:text-xl">
                           {s.startTime}
                         </div>
-                        <div className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+                        <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                           {s.endTime}
                         </div>
                       </div>
-                      {/* Divider */}
-                      <div className="h-10 w-px shrink-0 bg-border" />
-                      {/* Class info */}
-                      <div className="min-w-0 flex-1">
+                      <div className="col-span-9 sm:col-span-6">
                         <div className="font-serif text-lg text-espresso sm:text-xl">
                           {clsName}
                         </div>
@@ -123,11 +118,9 @@ export function Schedule() {
                           {instructor} · {levelLabel} · {s.classType?.durationMin} min
                         </div>
                       </div>
-                      {/* Tags + book */}
-                      <div className="flex shrink-0 items-center gap-3">
+                      <div className="col-span-12 flex items-center gap-2 sm:col-span-4 sm:justify-end">
                         {s.online && (
-                          <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-sage">
-                            <span className="h-1.5 w-1.5 rounded-full bg-sage" />
+                          <span className="rounded-full border border-sage/40 px-3 py-1 text-[9px] uppercase tracking-[0.2em] text-sage">
                             {t("label.online")}
                           </span>
                         )}

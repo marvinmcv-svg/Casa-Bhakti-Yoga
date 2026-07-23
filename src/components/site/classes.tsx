@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/i18n";
 import { ChapterIcon } from "@/components/motion/chapter-icon";
 import { SplitText } from "@/components/motion/split-text";
 import { Reveal } from "@/components/motion/reveal";
-import { SmoothCarousel } from "@/components/motion/smooth-carousel";
+import { DragSlider } from "@/components/motion/drag-slider";
 import { ClayButton } from "@/components/motion/clay-button";
 import type { ClassType } from "@/hooks/use-site-data";
 
@@ -41,11 +41,11 @@ export function Classes() {
 
       <div className="mt-16">
         {classes.length > 0 ? (
-          <SmoothCarousel className="pl-5 sm:pl-8" itemClassName="w-[78vw] sm:w-[60vw] lg:w-[36vw] xl:w-[30vw]">
+          <DragSlider className="pl-5 sm:pl-8" itemClassName="w-[78vw] sm:w-[60vw] lg:w-[36vw] xl:w-[30vw]">
             {classes.map((cls) => (
               <ClassCard key={cls.id} cls={cls} c={c} t={t} lang={lang} levelKey={levelKey} />
             ))}
-          </SmoothCarousel>
+          </DragSlider>
         ) : null}
       </div>
 
