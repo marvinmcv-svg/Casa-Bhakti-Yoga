@@ -34,21 +34,21 @@ export function Testimonials() {
         <div className="mt-16">
           <AnimatePresence mode="wait">
             <motion.div key={current.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }} className="relative">
-              <Quote className="mx-auto mb-6 h-10 w-10 text-clay/30" />
-              <blockquote className="mx-auto max-w-3xl text-center">
-                <p className="font-serif text-2xl font-light italic leading-[1.4] text-espresso sm:text-3xl lg:text-4xl">&ldquo;{quote}&rdquo;</p>
-                <div className="mt-8 flex items-center justify-center gap-4">
-                  <div className="h-14 w-14 overflow-hidden rounded-full bg-secondary ring-2 ring-clay/20">{current.authorImage ? <img src={current.authorImage} alt={current.authorName} className="h-full w-full object-cover" /> : <div className="flex h-full w-full items-center justify-center font-serif text-lg text-clay">{current.authorName.charAt(0)}</div>}</div>
-                  <div className="text-left"><div className="font-serif text-lg text-espresso">{current.authorName}</div>{role && <div className="text-xs uppercase tracking-[0.2em] text-clay">{role}</div>}<div className="mt-1 flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => (<Star key={i} size={12} className={i < current.rating ? "fill-clay text-clay" : "text-muted-foreground/30"} />))}</div></div>
+              <Quote className="mx-auto mb-8 h-12 w-12 text-clay/20" />
+              <blockquote className="mx-auto max-w-4xl text-center">
+                <p className="font-serif text-3xl font-light italic leading-[1.35] text-espresso sm:text-4xl lg:text-5xl">&ldquo;{quote}&rdquo;</p>
+                <div className="mt-10 flex items-center justify-center gap-4">
+                  <div className="h-16 w-16 overflow-hidden rounded-full bg-secondary ring-2 ring-clay/20">{current.authorImage ? <img src={current.authorImage} alt={current.authorName} className="h-full w-full object-cover" /> : <div className="flex h-full w-full items-center justify-center font-serif text-xl text-clay">{current.authorName.charAt(0)}</div>}</div>
+                  <div className="text-left"><div className="font-serif text-xl text-espresso">{current.authorName}</div>{role && <div className="text-[10px] uppercase tracking-[0.25em] text-clay">{role}</div>}<div className="mt-1 flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => (<Star key={i} size={11} className={i < current.rating ? "fill-clay text-clay/70" : "text-muted-foreground/20"} />))}</div></div>
                 </div>
               </blockquote>
             </motion.div>
           </AnimatePresence>
           {testimonials.length > 1 && (
-            <div className="mt-10 flex items-center justify-center gap-4">
-              <button onClick={prev} aria-label="Previous" className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-clay hover:text-clay"><ChevronLeft size={18} /></button>
-              <div className="flex gap-1.5">{testimonials.map((_, i) => (<button key={i} onClick={() => setIdx(i)} aria-label={`Go to testimonial ${i + 1}`} className={`h-1.5 rounded-full transition-all ${i === idx % testimonials.length ? "w-6 bg-clay" : "w-1.5 bg-border"}`} />))}</div>
-              <button onClick={next} aria-label="Next" className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-clay hover:text-clay"><ChevronRight size={18} /></button>
+            <div className="mt-12 flex items-center justify-center gap-6">
+              <button onClick={prev} aria-label="Previous" className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-clay"><ChevronLeft size={20} /></button>
+              <div className="flex gap-2">{testimonials.map((_, i) => (<button key={i} onClick={() => setIdx(i)} aria-label={`Go to testimonial ${i + 1}`} className={`h-1 rounded-full transition-all duration-500 ${i === idx % testimonials.length ? "w-8 bg-clay" : "w-1.5 bg-border hover:bg-clay/40"}`} />))}</div>
+              <button onClick={next} aria-label="Next" className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-clay"><ChevronRight size={20} /></button>
             </div>
           )}
         </div>

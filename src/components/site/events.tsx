@@ -148,22 +148,24 @@ function CompactEvent({
       href="https://wa.me/59167394998"
       target="_blank"
       rel="noopener noreferrer"
-      className="group grid grid-cols-12 items-center gap-4 border-b border-cream/10 py-5 transition-colors hover:bg-cream/5"
+      className="group flex items-center gap-5 rounded-lg border border-cream/10 bg-cream/[0.03] p-5 transition-all duration-500 hover:border-clay/30 hover:bg-cream/[0.06]"
     >
-      <div className="col-span-3 sm:col-span-2">
-        <div className="font-serif text-2xl text-clay">
-          {date.getDate()}
-        </div>
-        <div className="text-[10px] uppercase tracking-[0.2em] text-cream/50">
-          {date.toLocaleDateString(locale, { month: "short", year: "numeric" })}
-        </div>
+      {/* Date block — visual anchor */}
+      <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-lg border border-clay/30 bg-clay/10">
+        <span className="font-serif text-2xl leading-none text-clay">{date.getDate()}</span>
+        <span className="text-[9px] uppercase tracking-[0.15em] text-cream/50">
+          {date.toLocaleDateString(locale, { month: "short" })}
+        </span>
       </div>
-      <div className="col-span-9 sm:col-span-6">
+      {/* Title + location */}
+      <div className="min-w-0 flex-1">
         <div className="font-serif text-lg text-cream sm:text-xl">{title}</div>
-        <div className="mt-0.5 text-xs text-cream/70">{location}</div>
+        <div className="mt-0.5 text-xs text-cream/60">{location}</div>
       </div>
-      <div className="col-span-12 text-xs uppercase tracking-[0.2em] text-cream/75 sm:col-span-4 sm:text-right">
-        {price} <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+      {/* Price + arrow */}
+      <div className="shrink-0 text-right">
+        <div className="text-xs uppercase tracking-[0.2em] text-cream/75">{price}</div>
+        <span className="mt-1 inline-block text-clay transition-transform duration-300 group-hover:translate-x-1">→</span>
       </div>
     </a>
   );

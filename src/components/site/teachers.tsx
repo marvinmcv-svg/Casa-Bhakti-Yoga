@@ -59,26 +59,30 @@ function TeacherCard({
 
   return (
     <Reveal delay={delay} y={40} className="group">
-      <article className="overflow-hidden rounded-sm bg-card">
+      <article className="overflow-hidden rounded-lg bg-card shadow-sm transition-all duration-500 group-hover:shadow-xl">
         <div className="relative aspect-[3/4] overflow-hidden">
           <img
             src={teacher.imageUrl}
             alt={name}
-            className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out-quart group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out-quart group-hover:scale-108"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-espresso/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          <div className="absolute bottom-4 left-4 right-4 translate-y-4 text-cream opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/20 to-transparent" />
+          {/* Name + role overlaid on image */}
+          <div className="absolute bottom-0 left-0 right-0 p-5 text-cream">
+            <h3 className="font-serif text-2xl">{name}</h3>
+            <p className="mt-0.5 text-[10px] uppercase tracking-[0.25em] text-gold">{role}</p>
+          </div>
+          {/* Bio reveals on hover */}
+          <div className="absolute inset-0 flex items-end bg-espresso/80 p-5 opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100">
             <p className="text-sm leading-relaxed text-cream/90">{bio}</p>
           </div>
         </div>
-        <div className="p-5">
-          <h3 className="font-serif text-2xl text-espresso">{name}</h3>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.25em] text-clay">{role}</p>
-          {specialties && (
-            <p className="mt-3 text-xs text-muted-foreground">{specialties}</p>
-          )}
-        </div>
+        {specialties && (
+          <div className="p-4 text-center">
+            <p className="text-xs italic text-muted-foreground">{specialties}</p>
+          </div>
+        )}
       </article>
     </Reveal>
   );
